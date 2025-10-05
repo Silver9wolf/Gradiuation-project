@@ -58,6 +58,8 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   body: JSON.stringify(data)
 });
         const result = await response.json();
+console.log("رد السيرفر بالكامل:", result);
+console.log("حالة الرد:", response.status);
 
       if (result.message === "Login successful") {
     alert(result.message); // رسالة نجاح

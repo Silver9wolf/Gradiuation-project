@@ -13,7 +13,7 @@
         <form id="loginForm">
             <div class="input-box">
                 <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                <input type="email" name="username" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
 
             <div class="input-box">
@@ -45,7 +45,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     const formData = new FormData(this);
     const data = {
-        username: formData.get("username"),
+        email: formData.get("username"), //عدلت كلمة email
         password: formData.get("password")
     };
 
@@ -61,6 +61,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
         if (response.ok) {
             alert(result.message); // رسالة نجاح
+            console.log("رد السيرفر ",result);
             window.location.href = "index.html"; // تحويل للصفحة الرئيسية
         } else {
             alert(result.detail || "خطأ في تسجيل الدخول");

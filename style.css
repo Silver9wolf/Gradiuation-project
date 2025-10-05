@@ -7,24 +7,38 @@
 header {
   position: fixed;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: space-between;
+  align-items: center; 
   height: 60px;
   width: 100%;
-  background: rgb(255, 255, 255);
+  background: rgba(240, 240, 240, 0.575);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding-right: 30px;
+  padding-left: 40px;
 }
-.nav ul {
-  display: flex;
-}
+
 .logo a {
-  color: rgb(0, 0, 0);
   transition-duration: 1s;
-  font-weight: 800;
+  font-weight: 500;
+  font-size: 35px;
+  text-decoration: none;
+  text-align: left;
+   background: linear-gradient(to right, #023E8A, #00B4D8, #48CAE4, #90E0EF); /* التدريج */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+ 
 }
 .logo a:hover {
   color: #259de2;
   transition-duration: 1s;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 30px;
 }
 .nav ul li {
   list-style: none;
@@ -32,20 +46,23 @@ header {
 .nav ul li a {
   margin: 5px;
   text-decoration: none;
-  color: rgb(27, 25, 25);
   font-weight: 500;
   position: relative;
-  color: rgb(27, 25, 25);
+  color: #023E8A;
   margin: 2px 14px;
-  font-size: 18px;
-  transition-duration: 1s;
+  font-size: 20px;
+ /*/transition-duration: 1s;*/
 }
 .nav ul li a:active {
   color: red;
 }
 .nav ul li a:hover {
-  color: #259de2;
-  transition-duration: 1s;
+  color: #ffffff;
+  background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
+  border: transparent;
+  border-radius: 20px;
+  padding: 10px 15px;
+  transition-duration: 0.5s;
 }
 
 .nav ul li a::before {
@@ -56,62 +73,40 @@ header {
   left: 0;
   bottom: 0;
   background-color: white;
-  transition-duration: 1s;
-}
-.nav ul li a:hover::before { 
-  width: 100%;
-  transition-duration: 1s;
-  background-color: #259de2;
-} /** الخط تحت الكلام*/
-
-
-#input {
-  height: 30px;
-  width: 300px;
-  text-decoration: none;
-  border: 0px;
-  padding: 5px;
+  /*transition-duration: 1s;*/
 }
 
-
-.logo a {
-  color: rgb(0, 0, 0);
-  font-size: 35px;
-  font-weight: 500;
-  text-decoration: none;
-}/*
-ion-icon {
-  width: 30px;
-  height: 30px;
-  background-color: white;
-  color: black;
-}
-ion-icon:hover {
-  cursor: pointer;
-}*/
-.search a {
-  display: flex;
-   align-items: center;
-  border: 1px solid #ccc;  /* خط يحدد الصندوق */
-  padding: 3px 8px;
-  border-radius: 4px; 
-}
-header a ion-icon {
-  position: relative;
-  right: 3px;
-}
 .btn {
-  width: 90px;
-  height: 35px;
-  background-color: transparent;
-  border: solid 1px black;
+  width: 100px;
+  height: 40px;
+  background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
+  border: none ;
   outline: none;
-  border-radius: 20px;
+  border-radius: 16px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.418);
   
 }
+.btn a {
+  text-decoration: none;
+  color: white;
+  font-size: 23px;
+  text-wrap: 20px;
+  
+}
+
+.btn:hover {
+  color: transparent;
+  background: white;
+  border: solid 2px #023E8A;
+
+}
+.btn:hover a {
+  color: #023E8A;
+}
+
 
  .body{
   display: flex;
@@ -242,6 +237,8 @@ header a ion-icon {
   color:#023E8A;
  text-decoration: underline;
 }
+
+
 
 
 

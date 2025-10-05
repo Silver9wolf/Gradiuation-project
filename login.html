@@ -59,13 +59,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 });
         const result = await response.json();
 
-        if (response.ok) {
-            alert(result.message); // رسالة نجاح
-            console.log("رد السيرفر ",result);
-            window.location.href = "index.html"; // تحويل للصفحة الرئيسية
-        } else {
-            alert(result.detail || "خطأ في تسجيل الدخول");
-        }
+      if (result.message === "Login successful") {
+    alert(result.message); // رسالة نجاح
+    console.log("رد السيرفر ", result);
+    window.location.href = "index.html"; // تحويل للصفحة الرئيسية
+} else {
+    alert(result.detail || "خطأ في تسجيل الدخول");
+    console.log("رد السيرفر (فشل):", result);
+}
     } catch (error) {
         console.error("Error:", error);
         alert("خطأ في الاتصال بالخادم");

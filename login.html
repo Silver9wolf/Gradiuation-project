@@ -45,10 +45,10 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     const formData = new FormData(this);
     const data = {
-        email: formData.get("username"), //عدلت كلمة email
+        email: formData.get("email"), //عدلت كلمة email
         password: formData.get("password")
     };
-
+     console.log("البيانات المرسلة", data); //<3 <3 اني ضفت السطر هادا 
     try {
        const response = await fetch("https://kamela-backend-1.onrender.com/login", {
   method: "POST",

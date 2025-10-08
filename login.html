@@ -27,7 +27,7 @@
                 <a href="#">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="btn-form">Login</button>
+            <button type="button" class="btn-form" onclick="loginUser()">Login</button>
 
             <div class="login-register">
                 <p>Don't have an account? <a href="register.html" class="register-link">Register</a></p>
@@ -35,6 +35,21 @@
         </form>
     </div>
 </div>
+<script>
+function loginUser() {
+    const email = document.querySelector('input[name="email"]').value;
+    const password = document.querySelector('input[name="password"]').value;
+
+    if(email && password) {
+        // إذا كان اسم المستخدم مخزن مسبقاً من صفحة التسجيل
+        const storedUsername = localStorage.getItem("username") || "User";
+        localStorage.setItem("username", storedUsername); // نخزن أو نثبت الاسم
+        window.location.href = "index.html"; // نرجع للصفحة الرئيسية
+    } else {
+        alert("Please fill both fields.");
+    }
+}
+</script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

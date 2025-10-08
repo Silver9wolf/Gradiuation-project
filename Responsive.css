@@ -1,0 +1,60 @@
+/*! Responsive Login & Register
+/* ✅ تصميم ريسبونسيف للشاشات الصغيرة (مثل الموبايل) */
+@media (max-width: 600px) {
+
+  .wrapper {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .form-box {
+    padding: 20px;
+  }
+
+  .form-box h2 {
+    font-size: 1cm; /* تصغير عنوان login */
+  }
+
+  .input-box {
+    margin: 20px 0;
+  }
+
+  .input-box input {
+    font-size: 0.45cm;
+    height: 100%;
+    padding: 0 30px 0 5px;
+    
+  }
+
+  .btn-form {
+    font-size: 0.5cm;
+    padding: 8px 70px; /* أصغر باش يناسب الموبايل */
+  }
+
+  .remember-forgot, .login-register {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.35cm;
+    padding-top: 25px;
+  }
+
+  .remember-forgot a, .login-register a {
+    margin-top: 8px;
+  }
+}
+
+/* ✅ للشاشات المتوسطة (تابلت مثلاً) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .wrapper {
+    width: 130%;
+    height: auto;
+  }
+
+  .btn-form {
+    font-size: 0.6cm;
+    padding: 10px 80px;
+  }
+}

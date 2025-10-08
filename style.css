@@ -237,7 +237,53 @@ header {
   color:#023E8A;
  text-decoration: underline;
 }
-
+.register {  /*!الbody متع الصفحة كاملة*/
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(image/nattu-adnan-atSUvc1hMwk-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.wrapper2 { /*! الفورم*/
+  position: relative;
+  width: 410px;
+  height: 510px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.wrapper2 .form-box {
+  /* width: 100px; */
+  padding: 40px;
+}
+.register-login { /*! سطر تذكرني*/
+  font-size: 0.4cm;
+  color: rgb(83, 83, 83);
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 40px;
+}
+.register-login a {
+  color:#0077B6;
+  text-decoration: none;
+}
+.register-login a:hover {
+  color:#023E8A;
+ text-decoration: underline;
+}
 
 
 

@@ -93,9 +93,9 @@ header {
   width: 100px;
   height: 40px;
   background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
-  border: none ;
+  border: none;
   outline: none;
-  border-radius: 16px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
@@ -112,8 +112,9 @@ header {
 
 .btn:hover {
   color: transparent;
-  background: white;
   border: solid 2px #023E8A;
+  background: none;
+  
 
 }
 .btn:hover a {
@@ -301,7 +302,7 @@ header {
 body.contact-page {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #ffffff;
+  background-color: #ebebeb;
   color: #333;
 }
 
@@ -336,7 +337,7 @@ body.contact-page {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.788); /* درجة التعتيم — زيديها لو تبيها أغمق */
+  background: rgba(0, 0, 0, 0.719); /* درجة التعتيم — زيديها لو تبيها أغمق */
   z-index: 1;
 }
 

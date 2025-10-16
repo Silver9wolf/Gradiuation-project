@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Responsive.css">
     <link rel="stylesheet" href="nav-footer.css">
+    <link rel="stylesheet" href="test.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
     
 
     
@@ -130,7 +134,17 @@
 
     counters.forEach((counter) => observer.observe(counter));
   </script>
+  
 <div id="navbar"></div>
+<script src="navbar.js"></script>
+<script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        initNavbar(); // شغّل toggle بعد تحميل navbar
+      });
+  </script>
 <div id="footer"></div>
 <script src="main.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

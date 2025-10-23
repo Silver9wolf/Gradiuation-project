@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Properties - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-footer.css">
+
+</head>
+<body>
+    <!-- النافبار -->
+    <div id="navbar"></div>
+
+    <!-- قسم الهيرو -->
+    <section class="ex">
+        <h1>Explore Our Properties</h1>
+        <p>Find your perfect vacation destination</p>
+    </section>
+
+    <!-- البحث والتصفية -->
+    <div class="explore-container">
+        <div class="search-filters">
+            <!-- صندوق البحث -->
+             <form class="search">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input class="search-input" type="search" placeholder="search..." dir="auto">
+            </div>
+        </form>
+
+            <!-- أزرار التصفية -->
+            <ul class="properties-filter">
+                <li><a class="is_active" href="#" data-filter="all">Show All</a></li>
+                <li><a href="#" data-filter="apartment">Apartments</a></li>
+                <li><a href="#" data-filter="villa">Villas</a></li>
+                <li><a href="#" data-filter="penthouse">Penthouses</a></li>
+            </ul>
+        </div>
+
+        <!-- شبكة العقارات -->
+        <div class="properties-grid" id="properties-container">
+            <!-- العقارات سيتم تحميلها هنا بواسطة الجافاسكريبت -->
+        </div>
+    </div>
+
+    <!-- زر المفضلة العائم - يظهر دائمًا -->
+    <a href="favorites.html" class="view-favorites" id="view-favorites-btn">
+        <i class="fas fa-heart"></i>
+        <span id="favorites-count">0</span> Favorites
+    </a>
+
+    <!-- الفوتر -->
+    <div id="footer"></div>
+
+    <script src="main.js"></script>
+    <script src="navbar.js"></script>
+    <script>
+        // بيانات العقارات
+        const properties = [
+            {
+                id: 1,
+                title: "Luxury Apartment in Riyadh",
+                type: "apartment",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Elegant apartment in prime location with stunning views and modern interior design",
+                rooms: 4,
+                capacity: 6,
+                rating: 4.5,
+                reviews: 128,
+                price: "2,264,000"
+            },
+            {
+                id: 2,
+                title: "Premium Villa in Palm District",
+                type: "villa",
+                image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Luxury villa with private garden and pool, elegant design and spacious areas",
+                rooms: 6,
+                capacity: 10,
+                rating: 4.8,
+                reviews: 76,
+                price: "4,500,000"
+            },
+            {
+                id: 3,
+                title: "Penthouse with Panoramic View",
+                type: "penthouse",
+                image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Exclusive penthouse on top floor with 360-degree city views",
+                rooms: 5,
+                capacity: 8,
+                rating: 4.9,
+                reviews: 54,
+                price: "6,200,000"
+            },
+            {
+                id: 4,
+                title: "Modern Apartment in Media District",
+                type: "apartment",
+                image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Contemporary apartment with open design close to services and commercial centers",
+                rooms: 3,
+                capacity: 4,
+                rating: 4.2,
+                reviews: 89,
+                price: "1,800,000"
+            },
+            {
+                id: 5,
+                title: "Modern Villa in Roses District",
+                type: "villa",
+                image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Family villa in quiet neighborhood, modern design and spacious garden",
+                rooms: 5,
+                capacity: 8,
+                rating: 4.6,
+                reviews: 42,
+                price: "3,750,000"
+            },
+            {
+                id: 6,
+                title: "Luxury Penthouse with Private Pool",
+                type: "penthouse",
+                image: "https://images.unsplash.com/photo-1540518614846-7eded102d7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Elegant penthouse with private rooftop pool and breathtaking views",
+                rooms: 6,
+                capacity: 10,
+                rating: 4.7,
+                reviews: 31,
+                price: "7,500,000"
+            }
+        ];
+
+        // المفضلة - نستخدم localStorage لحفظها
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // دالة لعرض العقارات
+        function renderProperties(propertiesToRender, containerId, showFavoriteBtn = true) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            propertiesToRender.forEach(property => {
+                const isFavorite = favorites.includes(property.id);
+                
+                const propertyCard = document.createElement('div');
+                propertyCard.className = `property-card properties-items ${property.type}`;
+                
+                // إنشاء النجوم حسب التقييم
+                const stars = generateStars(property.rating);
+                
+                propertyCard.innerHTML = `
+                    <div class="card-image">
+                        <img src="${property.image}" alt="${property.title}">
+                        ${showFavoriteBtn ? `
+                        <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${property.id}">
+                            <i class="${isFavorite ? 'fas' : 'far'} fa-heart"></i>
+                        </button>
+                        ` : ''}
+                    </div>
+                    <div class="card-content">
+                        <h3 class="property-title">${property.title}</h3>
+                        <p class="property-description">${property.description}</p>
+                        
+                        <div class="property-details">
+                            <div class="detail-item">
+                                <i class="fas fa-door-open"></i>
+                                <span>${property.rooms} Rooms</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-user-friends"></i>
+                                <span>${property.capacity} People</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-tag"></i>
+                                <span>${property.price} SAR</span>
+                            </div>
+                        </div>
+                        
+                        <div class="rating">
+                            <div class="stars">
+                                ${stars}
+                            </div>
+                            <span class="rating-count">(${property.reviews} reviews)</span>
+                        </div>
+                        
+                        <button class="details-btn" data-id="${property.id}">View Details</button>
+                    </div>
+                `;
+                
+                container.appendChild(propertyCard);
+            });
+            
+            // إضافة event listeners لأزرار المفضلة
+            if (showFavoriteBtn) {
+                document.querySelectorAll('.favorite-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const propertyId = parseInt(this.getAttribute('data-id'));
+                        toggleFavorite(propertyId);
+                    });
+                });
+            }
+            
+            // إضافة event listeners لأزرار التفاصيل
+            document.querySelectorAll('.details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const propertyId = parseInt(this.getAttribute('data-id'));
+                    showPropertyDetails(propertyId);
+                });
+            });
+        }
+
+        // دالة لتوليد النجوم حسب التقييم
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            // إضافة النجوم الكاملة
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            // إضافة نصف نجمة إذا كان التقييم يحتوي على نصف
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            // إضافة النجوم الفارغة
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // دالة للتبديل بين إضافة وإزالة من المفضلة
+        function toggleFavorite(propertyId) {
+            const index = favorites.indexOf(propertyId);
+            
+            if (index === -1) {
+                // إضافة إلى المفضلة
+                favorites.push(propertyId);
+                
+                // حفظ العقار في favoriteProperties
+                const property = properties.find(p => p.id === propertyId);
+                if (property) {
+                    let favoriteProperties = JSON.parse(localStorage.getItem('favoriteProperties')) || [];
+                    // نتأكد إنو العقار مش موجود بالفعل
+                    if (!favoriteProperties.find(p => p.id === propertyId)) {
+                        favoriteProperties.push(property);
+                        localStorage.setItem('favoriteProperties', JSON.stringify(favoriteProperties));
+                    }
+                }
+            } else {
+                // إزالة من المفضلة
+                favorites.splice(index, 1);
+                
+                // إزالة العقار من favoriteProperties
+                let favoriteProperties = JSON.parse(localStorage.getItem('favoriteProperties')) || [];
+                favoriteProperties = favoriteProperties.filter(p => p.id !== propertyId);
+                localStorage.setItem('favoriteProperties', JSON.stringify(favoriteProperties));
+            }
+            
+            // حفظ في localStorage
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            
+            // تحديث الواجهة
+            updateFavoritesUI();
+            
+            // إعادة عرض العقارات لتحديث حالة القلب
+            renderProperties(properties, 'properties-container');
+        }
+
+        // دالة لتحديث واجهة المفضلة
+        function updateFavoritesUI() {
+            // تحديث العداد
+            document.getElementById('favorites-count').textContent = favorites.length;
+            
+            // زر المفضلة يظهر دائمًا
+            const viewFavoritesBtn = document.getElementById('view-favorites-btn');
+            viewFavoritesBtn.style.display = 'flex';
+        }
+
+        // دالة لتصفية العقارات حسب النوع
+        function filterProperties(type) {
+            const allProperties = document.querySelectorAll('.properties-items');
+            
+            allProperties.forEach(property => {
+                if (type === 'all' || property.classList.contains(type)) {
+                    property.style.display = 'block';
+                } else {
+                    property.style.display = 'none';
+                }
+            });
+        }
+
+        // دالة لعرض تفاصيل العقار
+        function showPropertyDetails(propertyId) {
+            alert(`Property details for ID ${propertyId} will be shown on a separate page`);
+            // يمكن توجيه المستخدم لصفحة التفاصيل هنا
+        }
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // عرض العقارات
+            renderProperties(properties, 'properties-container');
+            
+            // تحديث واجهة المفضلة
+            updateFavoritesUI();
+            
+            // إضافة event listeners لأزرار التصفية
+            document.querySelectorAll('.properties-filter a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // تحديث الزر النشط
+                    document.querySelectorAll('.properties-filter a').forEach(a => {
+                        a.classList.remove('is_active');
+                    });
+                    this.classList.add('is_active');
+                    
+                    // تطبيق التصفية
+                    const filterType = this.getAttribute('data-filter');
+                    filterProperties(filterType);
+                });
+            });
+            
+            // إضافة وظيفة البحث
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const filteredProperties = properties.filter(property => 
+                    property.title.toLowerCase().includes(searchTerm) ||
+                    property.description.toLowerCase().includes(searchTerm)
+                );
+                renderProperties(filteredProperties, 'properties-container');
+            });
+        });
+
+        // دالة مساعدة لتنظيف البيانات القديمة
+        function cleanupOldData() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const favoriteProperties = JSON.parse(localStorage.getItem('favoriteProperties')) || [];
+            
+            // نحافظ فقط على العقارات الموجودة في favorites
+            const cleanedProperties = favoriteProperties.filter(property => 
+                favorites.includes(property.id)
+            );
+            
+            localStorage.setItem('favoriteProperties', JSON.stringify(cleanedProperties));
+        }
+
+        // ننظف البيانات القديمة عند التحميل
+        cleanupOldData();
+    </script>
+</body>
+</html>

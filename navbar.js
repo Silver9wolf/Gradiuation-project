@@ -12,4 +12,33 @@ function initNavbar() {
                 : 'fa-solid fa-bars';
         };
     }
+
+    // إضافة active class للصفحة الحالية
+    highlightCurrentPage();
+}
+
+function highlightCurrentPage() {
+    const currentPage = window.location.pathname.split("/").pop();
+    
+    // البحث في النافبار العادي
+    document.querySelectorAll(".navbar .links a").forEach(link => {
+        if(link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+        if (currentPage === "" || currentPage === "index.html") {
+  document.querySelector('a[href="index.html"]').classList.add("active");
+}
+
+    });
+    
+    // البحث في القائمة المنسدلة
+    document.querySelectorAll(".dropdown_menu a").forEach(link => {
+        if(link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
 }

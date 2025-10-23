@@ -29,7 +29,24 @@ list-style: none;
     font-size: 20px;
     transition-duration: 1s;
 }
+/* تحديث تنسيق active class */
+.links a.active,
+.dropdown_menu a.active {
+  color: #ffffff !important;
+  background: linear-gradient(to right, #023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF) !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+  padding: 10px 15px !important;
+  transition-duration: 0.5s !important;
+}
 
+/* إزالة الهوفر للروابط النشطة */
+.links a.active:hover,
+.dropdown_menu a.active:hover {
+  color: #ffffff !important;
+  background: linear-gradient(to right, #023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF) !important;
+  transform: none !important;
+}
 .links a:hover {
   color: #ffffff;
   background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);

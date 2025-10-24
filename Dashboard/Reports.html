@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقارير والإحصائيات - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="dashboard.css">
+
+    <style>
+        /* تنسيقات خاصة بالتقارير */
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin-top: 15px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .metric-change {
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        .change-positive {
+            color: var(--success-color);
+        }
+
+        .change-negative {
+            color: var(--danger-color);
+        }
+
+        .report-period {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .period-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .period-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- الشريط الجانبي -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>لوحة التحكم</h2>
+                <p>إدارة VeRandA</p>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="Dashboard.html" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="management.html" class="menu-item">
+                    <i class="fas fa-building"></i>
+                    <span>إدارة العقارات</span>
+                </a>
+                <a href="Reservations.html" class="menu-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>الحجوزات</span>
+                </a>
+                <a href="users.html" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>المستخدمين</span>
+                </a>
+                <a href="Reports.html" class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+                <a href="../index.html" class="menu-item">
+                    <i class="fas fa-globe"></i>
+                    <span>الموقع الرئيسي</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>التقارير والإحصائيات</h1>
+                    <p>تحليل أداء المنصة وإحصائيات الاستخدام</p>
+                </div>
+                <button class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- فلتر الفترة الزمنية -->
+                <div class="report-period">
+                    <button class="period-btn active">هذا الشهر</button>
+                    <button class="period-btn">الربع الأخير</button>
+                    <button class="period-btn">هذه السنة</button>
+                    <button class="period-btn">الفترة المخصصة</button>
+                    <div style="flex: 1;"></div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i> تصدير التقرير
+                    </button>
+                </div>
+
+                <!-- مؤشرات الأداء -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: var(--primary-color);">48,750</div>
+                        <div class="metric-label">الإيرادات (دينار)</div>
+                        <div class="metric-change change-positive">+12% عن الشهر الماضي</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: var(--success-color);">324</div>
+                        <div class="metric-label">الحجوزات النشطة</div>
+                        <div class="metric-change change-positive">+8% عن الشهر الماضي</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: var(--warning-color);">86%</div>
+                        <div class="metric-label">معدل الإشغال</div>
+                        <div class="metric-change change-positive">+5% عن الشهر الماضي</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" style="color: var(--accent-color);">4.8</div>
+                        <div class="metric-label">متوسط التقييم</div>
+                        <div class="metric-change change-positive">+0.2 عن الشهر الماضي</div>
+                    </div>
+                </div>
+
+                <!-- الرسوم البيانية -->
+                <div class="chart-container">
+                    <h3>الإيرادات الشهرية</h3>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-line" style="font-size: 2rem; margin-left: 10px;"></i>
+                        رسم بياني للإيرادات الشهرية
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="chart-container">
+                        <h3>توزيع الحجوزات حسب النوع</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-pie" style="font-size: 2rem; margin-left: 10px;"></i>
+                            رسم بياني دائري
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>المستخدمين الجدد</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-bar" style="font-size: 2rem; margin-left: 10px;"></i>
+                            رسم بياني شريطي
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تقارير مفصلة -->
+                <div class="dashboard-section">
+                    <div class="section-header">
+                        <h2>التقارير التفصيلية</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>الفترة</th>
+                                    <th>الإيرادات</th>
+                                    <th>عدد الحجوزات</th>
+                                    <th>معدل الإشغال</th>
+                                    <th>المستخدمين الجدد</th>
+                                    <th>متوسط التقييم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>مارس 2024</td>
+                                    <td>48,750 د.ل</td>
+                                    <td>324</td>
+                                    <td>86%</td>
+                                    <td>42</td>
+                                    <td>4.8</td>
+                                </tr>
+                                <tr>
+                                    <td>فبراير 2024</td>
+                                    <td>43,500 د.ل</td>
+                                    <td>298</td>
+                                    <td>81%</td>
+                                    <td>38</td>
+                                    <td>4.6</td>
+                                </tr>
+                                <tr>
+                                    <td>يناير 2024</td>
+                                    <td>39,200 د.ل</td>
+                                    <td>265</td>
+                                    <td>76%</td>
+                                    <td>35</td>
+                                    <td>4.5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

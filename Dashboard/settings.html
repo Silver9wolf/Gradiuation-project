@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="dashboard.css">
+
+    <style>
+        /* تنسيقات خاصة بالإعدادات */
+        .settings-tabs {
+            display: flex;
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 20px;
+        }
+
+        .settings-tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .settings-tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .settings-content {
+            display: none;
+        }
+
+        .settings-content.active {
+            display: block;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-left: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--success-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .settings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .settings-info {
+            flex: 1;
+        }
+
+        .settings-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .settings-desc {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- الشريط الجانبي -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>لوحة التحكم</h2>
+                <p>إدارة VeRandA</p>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="Dashboard.html" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="management.html" class="menu-item">
+                    <i class="fas fa-building"></i>
+                    <span>إدارة العقارات</span>
+                </a>
+                <a href="Reservations.html" class="menu-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>الحجوزات</span>
+                </a>
+                <a href="users.html" class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>المستخدمين</span>
+                </a>
+                <a href="Reports.html" class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+                <a href="../index.html" class="menu-item">
+                    <i class="fas fa-globe"></i>
+                    <span>الموقع الرئيسي</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>الإعدادات</h1>
+                    <p>إعدادات المنصة والتخصيص</p>
+                </div>
+                <button class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- تبويبات الإعدادات -->
+                <div class="settings-tabs">
+                    <button class="settings-tab active" data-tab="general">عام</button>
+                    <button class="settings-tab" data-tab="notifications">الإشعارات</button>
+                    <button class="settings-tab" data-tab="payment">الدفعات</button>
+                    <button class="settings-tab" data-tab="security">الأمان</button>
+                </div>
+
+                <!-- الإعدادات العامة -->
+                <div class="settings-content active" id="general-tab">
+                    <div class="form-section">
+                        <h3>معلومات الموقع</h3>
+                        <div class="form-group">
+                            <label>اسم الموقع</label>
+                            <input type="text" class="form-control" value="VeRandA">
+                        </div>
+                        <div class="form-group">
+                            <label>وصف الموقع</label>
+                            <textarea class="form-control" rows="3">منصة حجز الشاليهات والفيلات في ليبيا</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني للدعم</label>
+                            <input type="email" class="form-control" value="info@veranda.com">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>إعدادات الحجوزات</h3>
+                        <div class="form-group">
+                            <label>فترة الحجز الدنيا (أيام)</label>
+                            <input type="number" class="form-control" value="2" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>فترة الحجز القصوى (أيام)</label>
+                            <input type="number" class="form-control" value="30" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>نسبة العمولة (%)</label>
+                            <input type="number" class="form-control" value="10" min="0" max="50" step="0.1">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>إعدادات العرض</h3>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">الوضع الليلي</div>
+                                <div class="settings-desc">تفعيل الوضع الليلي تلقائياً</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">اللغة العربية</div>
+                                <div class="settings-desc">استخدام الواجهة باللغة العربية</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i> حفظ التغييرات
+                    </button>
+                </div>
+
+                <!-- إعدادات الإشعارات -->
+                <div class="settings-content" id="notifications-tab">
+                    <div class="form-section">
+                        <h3>إشعارات البريد الإلكتروني</h3>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">إشعارات الحجوزات الجديدة</div>
+                                <div class="settings-desc">إرسال إشعار عند استلام حجز جديد</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">إشعارات الدفع</div>
+                                <div class="settings-desc">إرسال إشعار عند اكتمال عملية الدفع</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">النشرة الإخبارية</div>
+                                <div class="settings-desc">استلام آخر التحديثات والعروض</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>إشعارات التطبيق</h3>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">إشعارات الدفع الذكي</div>
+                                <div class="settings-desc">إشعارات تلقائية حول حالة الدفع</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">تذكيرات الحجز</div>
+                                <div class="settings-desc">تذكير قبل موعد الحجز</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- إعدادات الدفع -->
+                <div class="settings-content" id="payment-tab">
+                    <div class="form-section">
+                        <h3>طرق الدفع</h3>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">الدفع عند الاستلام</div>
+                                <div class="settings-desc">الدفع نقداً عند الوصول</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">التحويل البنكي</div>
+                                <div class="settings-desc">الدفع عن طريق التحويل البنكي</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">البطاقات الائتمانية</div>
+                                <div class="settings-desc">الدفع باستخدام البطاقات الائتمانية</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>إعدادات الدفع</h3>
+                        <div class="form-group">
+                            <label>نسبة الدفعة الأولى (%)</label>
+                            <input type="number" class="form-control" value="25" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label>فترة الإلغاء المجاني (ساعات)</label>
+                            <input type="number" class="form-control" value="24" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>رسوم الإلغاء (%)</label>
+                            <input type="number" class="form-control" value="10" min="0" max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- إعدادات الأمان -->
+                <div class="settings-content" id="security-tab">
+                    <div class="form-section">
+                        <h3>أمان الحساب</h3>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">المصادقة الثنائية</div>
+                                <div class="settings-desc">تفعيل المصادقة الثنائية لتسجيل الدخول</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-info">
+                                <div class="settings-title">جلسات متعددة</div>
+                                <div class="settings-desc">السماح بتسجيل الدخول من أجهزة متعددة</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>تغيير كلمة المرور</h3>
+                        <div class="form-group">
+                            <label>كلمة المرور الحالية</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>كلمة المرور الجديدة</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>تأكيد كلمة المرور الجديدة</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-key"></i> تغيير كلمة المرور
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // تبديل تبويبات الإعدادات
+        document.querySelectorAll('.settings-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // إزالة النشاط من جميع التبويبات
+                document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.settings-content').forEach(c => c.classList.remove('active'));
+                
+                // إضافة النشاط للتبويب المحدد
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // التحكم في الشريط الجانبي
+        document.querySelector('.toggle-sidebar').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('sidebar-open');
+        });
+    </script>
+</body>
+</html>

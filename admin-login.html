@@ -139,33 +139,35 @@
 
     <script>
         document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = this.admin_username.value;
-            const password = this.admin_password.value;
-            const secret = this.admin_secret.value;
-            
-            // بيانات الدخول الإدارية (يمكنك تغييرها)
-            const adminCredentials = {
-                username: 'admin',
-                password: '123456789',
-                secret: '0000'
-            };
-            
-            if (username === adminCredentials.username && 
-                password === adminCredentials.password && 
-                secret === adminCredentials.secret) {
-                
-                // حفظ حالة الدخول في localStorage
-                localStorage.setItem('adminLoggedIn', 'true');
-                localStorage.setItem('adminLoginTime', new Date().getTime());
-                
-                // التوجيه إلى لوحة التحكم
-                window.location.href = 'dashboard/Dashboard.html';
-            } else {
-                alert('بيانات الدخول غير صحيحة!');
-            }
-        });
+    e.preventDefault();
+    
+    const username = this.admin_username.value;
+    const password = this.admin_password.value;
+    const secret = this.admin_secret.value;
+    
+    const adminCredentials = {
+        username: 'admin',
+        password: 'VeRandA2024',
+        secret: '1133'
+    };
+    
+    if (username === adminCredentials.username && 
+        password === adminCredentials.password && 
+        secret === adminCredentials.secret) {
+        
+        // ⬇️ البيانات الصحيحة الآن
+        const githubUsername = 'Silver9wolf';
+        const repoName = 'Gradiuation-project';
+        
+        const dashboardUrl = `https://${githubUsername}.github.io/${repoName}/dashboard/Dashboard.html`;
+        
+        // تحويل إلى لوحة التحكم
+        window.location.href = dashboardUrl;
+        
+    } else {
+        alert('❌ بيانات الدخول غير صحيحة!');
+    }
+});
     </script>
 </body>
 </html>

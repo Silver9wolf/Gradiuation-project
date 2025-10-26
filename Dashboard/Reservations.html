@@ -329,6 +329,57 @@
         document.querySelector('.toggle-sidebar').addEventListener('click', function() {
             document.body.classList.toggle('sidebar-open');
         });
+
+
+        // التحقق من صحة الدخول الإداري
+function checkAdminAuth() {
+    const isLoggedIn = localStorage.getItem('adminLoggedIn');
+    const loginTime = localStorage.getItem('adminLoginTime');
+    const currentTime = new Date().getTime();
+    
+    // إذا لم يكن مسجل دخول أو انتهت الجلسة (8 ساعات)
+    if (!isLoggedIn || (currentTime - loginTime > 8 * 60 * 60 * 1000)) {
+        localStorage.removeItem('adminLoggedIn');
+        localStorage.removeItem('adminLoginTime');
+        window.location.href = '../admin-login.html';
+        return false;
+    }
+    
+    return true;
+}
+
+// التحقق عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    if (!checkAdminAuth()) {
+        return;
+    }
+    
+    // تحديث وقت الدخول
+    localStorage.setItem('adminLoginTime', new Date().getTime());
+});
+
+// إضافة حدث تسجيل الخروج
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutButtons = document.querySelectorAll('.menu-item[href="#"]');
+    logoutButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('هل تريد تسجيل الخروج من النظام الإداري؟')) {
+                localStorage.removeItem('adminLoggedIn');
+                localStorage.removeItem('adminLoginTime');
+                window.location.href = '../admin-login.html';
+            }
+        });
+    });
+});
+
+
+// إظهار المحتوى بعد التحقق من الصلاحية
+document.addEventListener('DOMContentLoaded', function() {
+    if (checkAdminAuth()) {
+        document.body.classList.add('loaded');
+    }
+});
     </script>
 </body>
 </html>

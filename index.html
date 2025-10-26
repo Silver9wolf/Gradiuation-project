@@ -632,8 +632,8 @@
         </div>
     </section>
     
-
-
+    <!-- الرابط المخفي للإدارة -->
+    <a href="admin-login.html" id="adminSecretLink" style="display: none;">الإدارة</a>
     <!-- الفوتر -->
     <div id="footer"></div>
 
@@ -746,6 +746,34 @@
                     }
                 });
         });
+
+
+
+
+            let keySequence = [];
+        const secretCode = '1133'; // الرمز السري: 1133
+        
+        document.addEventListener('keydown', function(e) {
+            // نضيف الرقم المضغوط إلى التسلسل
+            if (e.key >= '0' && e.key <= '9') {
+                keySequence.push(e.key);
+                
+                // نحافظ على آخر 4 أرقام فقط
+                if (keySequence.length > 4) {
+                    keySequence = keySequence.slice(-4);
+                }
+                
+                // نتحقق إذا كان التسلسل مطابق للرمز السري
+                if (keySequence.join('') === secretCode) {
+                    e.preventDefault();
+                    window.location.href = 'admin-login.html';
+                }
+            }
+        });
+
+        // رسالة في الـ console للمطورين
+        console.log('للدخول الإداري: اكتب 1133');
+
     </script>
 </body>
 </html>

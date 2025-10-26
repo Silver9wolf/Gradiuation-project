@@ -8,87 +8,630 @@
     <link rel="stylesheet" href="Responsive.css">
     <link rel="stylesheet" href="nav-footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <style>
+        /* ========== NEW SECTIONS STYLES ========== */
+        
+        /* Property Types Section */
+        .property-types {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .type-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .type-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .type-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .type-card:hover .type-image img {
+            transform: scale(1.1);
+        }
+        
+        .type-content {
+            padding: 25px 20px;
+        }
+        
+        .type-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .type-content h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .type-content p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .type-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(to right, #023E8A, #0077B6);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .type-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(2, 62, 138, 0.3);
+        }
+        
+        /* Featured Resorts Section */
+        .featured-resorts {
+            padding: 80px 20px;
+        }
+        
+        .resorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .resort-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .resort-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .resort-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .resort-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .resort-card:hover .resort-image img {
+            transform: scale(1.05);
+        }
+        
+        .resort-price {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(2, 62, 138, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .resort-content {
+            padding: 25px;
+        }
+        
+        .resort-content h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .resort-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .resort-location i {
+            color: #e74c3c;
+        }
+        
+        .resort-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .feature i {
+            color: #3498db;
+        }
+        
+        .resort-rating {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .stars {
+            color: #f39c12;
+        }
+        
+        .rating-count {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .resort-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #023E8A, #0077B6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .resort-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(2, 62, 138, 0.3);
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, #023E8A, #0077B6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .step-card h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .step-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .types-grid,
+            .resorts-grid,
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .resort-features {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div id="navbar"></div>
+    
     <!-- السلايدر -->
-<section class="hero-slider">
-    <div class="slider-container">
-        <!-- السلايد 1 -->
-        <div class="slide active">
-            <img src="image/mathew-waters-cuTk59eNHUE-unsplash.jpg" alt="Luxury Resort">
-            <div class="slide-content">
-                <h1>Discover The Best Resorts In Libya</h1>
-                <p>Book your perfect getaway with trusted resorts and amazing experiences</p>
-                <div class="slide-buttons">
-                    <a href="explore.html" class="btn-primary">Explore Resorts</a>
-                    <a href="register.html" class="btn-secondary">Create Account</a>
+    <section class="hero-slider">
+        <div class="slider-container">
+            <!-- السلايد 1 -->
+            <div class="slide active">
+                <img src="image/mathew-waters-cuTk59eNHUE-unsplash.jpg" alt="Luxury Resort">
+                <div class="slide-content">
+                    <h1>Discover The Best Resorts In Libya</h1>
+                    <p>Book your perfect getaway with trusted resorts and amazing experiences</p>
+                    <div class="slide-buttons">
+                        <a href="explore.html" class="btn-primary">Explore Resorts</a>
+                        <a href="register.html" class="btn-secondary">Create Account</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السلايد 2 -->
+            <div class="slide">
+                <img src="image/sasha-make-stories-studio-V2wJBB2p7eU-unsplash.jpg" alt="Beautiful Villas">
+                <div class="slide-content">
+                    <h1>Discover The Best Resorts In Libya</h1>
+                    <p>Book your perfect getaway with trusted resorts and amazing experiences</p>
+                    <div class="slide-buttons">
+                        <a href="explore.html" class="btn-primary">Explore Resorts</a>
+                        <a href="register.html" class="btn-secondary">Create Account</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- السلايد 3 -->
+            <div class="slide">
+                <img src="image/paolo-nicolello-2gOxKj594nM-unsplash.jpg" alt="Amazing Views">
+                <div class="slide-content">
+                    <h1>Discover The Best Resorts In Libya</h1>
+                    <p>Book your perfect getaway with trusted resorts and amazing experiences</p>
+                    <div class="slide-buttons">
+                        <a href="explore.html" class="btn-primary">Explore Resorts</a>
+                        <a href="register.html" class="btn-secondary">Create Account</a>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- السلايد 2 -->
-        <div class="slide">
-            <img src="image/sasha-make-stories-studio-V2wJBB2p7eU-unsplash.jpg" alt="Beautiful Villas">
-            <div class="slide-content">
-                <h1>Discover The Best Resorts In Libya</h1>
-                <p>Book your perfect getaway with trusted resorts and amazing experiences</p>
-                <div class="slide-buttons">
-                    <a href="explore.html" class="btn-primary">Explore Resorts</a>
-                    <a href="register.html" class="btn-secondary">Create Account</a>
-                </div>
-            </div>
-        </div>
+        <!-- أزرار التحكم -->
+        <button class="slider-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
         
-        <!-- السلايد 3 -->
-        <div class="slide">
-            <img src="image/paolo-nicolello-2gOxKj594nM-unsplash.jpg" alt="Amazing Views">
-            <div class="slide-content">
-                <h1>Discover The Best Resorts In Libya</h1>
-                <p>Book your perfect getaway with trusted resorts and amazing experiences</p>
-                <div class="slide-buttons">
-                    <a href="explore.html" class="btn-primary">Explore Resorts</a>
-                    <a href="register.html" class="btn-secondary">Create Account</a>
-                </div>
-            </div>
+        <!-- النقاط للإشارة -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
         </div>
-    </div>
-    
-    <!-- أزرار التحكم -->
-    <button class="slider-btn prev-btn">
-        <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="slider-btn next-btn">
-        <i class="fas fa-chevron-right"></i>
-    </button>
-    
-    <!-- النقاط للإشارة -->
-    <div class="slider-dots">
-        <span class="dot active" data-slide="0"></span>
-        <span class="dot" data-slide="1"></span>
-        <span class="dot" data-slide="2"></span>
-    </div>
-</section>
+    </section>
+
+
     <!--السكشن الثاني-->
     <section class="about-home">
-    <div class="about-text">
-        <h2>Who We Are</h2>
-        <p>
-            Our platform helps travelers and families easily discover and book the best resorts, chalets, and tourist villages across Libya.
-            We connect guests with trusted hosts, ensuring a smooth and enjoyable booking experience from start to finish.
-            Whether you're planning a weekend getaway or a long holiday, we make it simple and stress-free.
-        </p>
-        <a href="about.html" class="btn btn-blue">Read More</a>
-    </div>
-    <div class="about-image">
-        <img src="image/yuliya-pankevich-oyxsG2Lh_uA-unsplash.jpg" alt="Resort image">
-    </div>
-</section>
-
-
-
+        <div class="about-text">
+            <h2>Who We Are</h2>
+            <p>
+                Our platform helps travelers and families easily discover and book the best resorts, chalets, and tourist villages across Libya.
+                We connect guests with trusted hosts, ensuring a smooth and enjoyable booking experience from start to finish.
+                Whether you're planning a weekend getaway or a long holiday, we make it simple and stress-free.
+            </p>
+            <a href="about.html" class="btn btn-blue">Read More</a>
+        </div>
+        <div class="about-image">
+            <img src="image/yuliya-pankevich-oyxsG2Lh_uA-unsplash.jpg" alt="Resort image">
+        </div>
+    </section>
+    
+    <!-- قسم أنواع الأماكن -->
+    <section class="property-types">
+        <div class="section-header">
+            <h2>Explore Our Property Types</h2>
+            <p>Discover the perfect accommodation for your next getaway</p>
+        </div>
+        
+        <div class="types-grid">
+            <!-- شاليهات -->
+            <div class="type-card">
+                <div class="type-image">
+                    <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chalets">
+                </div>
+                <div class="type-content">
+                    
+                    <h3>Chalets</h3>
+                    <p>Cozy and charming chalets perfect for romantic getaways and family vacations in scenic locations.</p>
+                    <a href="explore.html?filter=chalet" class="type-btn">Discover Chalets</a>
+                </div>
+            </div>
+            
+            <!-- استراحات -->
+            <div class="type-card">
+                <div class="type-image">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Rest Houses">
+                </div>
+                <div class="type-content">
+                    
+                    <h3>Rest Houses</h3>
+                    <p>Comfortable and convenient rest houses ideal for short stays and business trips.</p>
+                    <a href="explore.html?filter=resthouse" class="type-btn">Explore Rest Houses</a>
+                </div>
+            </div>
+            
+            <!-- فلل فخمة -->
+            <div class="type-card">
+                <div class="type-image">
+                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury Villas">
+                </div>
+                <div class="type-content">
+                    
+                    <h3>Luxury Villas</h3>
+                    <p>Spacious and elegant villas with premium amenities for an unforgettable luxury experience.</p>
+                    <a href="explore.html?filter=villa" class="type-btn">View Villas</a>
+                </div>
+            </div>
+            
+            <!-- منتجعات -->
+            <div class="type-card">
+                <div class="type-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Resorts">
+                </div>
+                <div class="type-content">
+                    
+                    <h3>Resorts</h3>
+                    <p>All-inclusive resorts with extensive facilities and services for the ultimate vacation experience.</p>
+                    <a href="explore.html" class="type-btn">Browse Resorts</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم أفضل العروض -->
+    <section class="featured-resorts">
+        <div class="section-header">
+            <h2>Featured Resorts</h2>
+            <p>Handpicked selections for an exceptional stay</p>
+        </div>
+        
+        <div class="resorts-grid">
+            <!-- عقار 1 -->
+            <div class="resort-card">
+                <div class="resort-image">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury Rest House">
+                    <div class="resort-price">1,200 SAR/night</div>
+                </div>
+                <div class="resort-content">
+                    <h3>Luxury Rest House in Riyadh</h3>
+                    <div class="resort-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Al Olaya District, Riyadh</span>
+                    </div>
+                    <div class="resort-features">
+                        <div class="feature">
+                            <i class="fas fa-door-open"></i>
+                            <span>4 Rooms</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>6 People</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>350 m²</span>
+                        </div>
+                    </div>
+                    <div class="resort-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-count">(128 reviews)</span>
+                    </div>
+                    <a href="property-details.html?id=1" class="resort-btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- عقار 2 -->
+            <div class="resort-card">
+                <div class="resort-image">
+                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Premium Villa">
+                    <div class="resort-price">2,500 SAR/night</div>
+                </div>
+                <div class="resort-content">
+                    <h3>Premium Villa in Palm District</h3>
+                    <div class="resort-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Palm District, Jeddah</span>
+                    </div>
+                    <div class="resort-features">
+                        <div class="feature">
+                            <i class="fas fa-door-open"></i>
+                            <span>6 Rooms</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>10 People</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>550 m²</span>
+                        </div>
+                    </div>
+                    <div class="resort-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">(76 reviews)</span>
+                    </div>
+                    <a href="property-details.html?id=2" class="resort-btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- عقار 3 -->
+            <div class="resort-card">
+                <div class="resort-image">
+                    <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chalet with View">
+                    <div class="resort-price">3,200 SAR/night</div>
+                </div>
+                <div class="resort-content">
+                    <h3>Chalet with Panoramic View</h3>
+                    <div class="resort-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mountain View, Abha</span>
+                    </div>
+                    <div class="resort-features">
+                        <div class="feature">
+                            <i class="fas fa-door-open"></i>
+                            <span>5 Rooms</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-user-friends"></i>
+                            <span>8 People</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>400 m²</span>
+                        </div>
+                    </div>
+                    <div class="resort-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">(54 reviews)</span>
+                    </div>
+                    <a href="property-details.html?id=3" class="resort-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم طريقة الحجز -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Book your perfect stay in just 3 simple steps</p>
+        </div>
+        
+        <div class="steps-container">
+            <!-- الخطوة 1 -->
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Discover Resorts</h3>
+                <p>Browse our curated collection of the best resorts, chalets, and villas across Libya.</p>
+            </div>
+            
+            <!-- الخطوة 2 -->
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Choose & Book</h3>
+                <p>Select your favorite property, choose your dates, and complete your booking securely.</p>
+            </div>
+            
+            <!-- الخطوة 3 -->
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">
+                <i class="fas fa-umbrella-beach"></i>                </div>
+                <h3>Enjoy Your Stay</h3>
+                <p>Relax and create wonderful memories in your chosen accommodation.</p>
+            </div>
+        </div>
+    </section>
+    
 
 
     <!-- الفوتر -->
@@ -99,110 +642,110 @@
     <script src="navbar.js"></script>
     <script>
         // السلايدر
-class HeroSlider {
-    constructor() {
-        this.slides = document.querySelectorAll('.slide');
-        this.dots = document.querySelectorAll('.dot');
-        this.prevBtn = document.querySelector('.prev-btn');
-        this.nextBtn = document.querySelector('.next-btn');
-        this.currentSlide = 0;
-        this.slideInterval = null;
-        this.slideDuration = 5000; // 5 ثواني بين كل سلايد
-        
-        this.init();
-    }
-    
-    init() {
-        // أحداث الأزرار
-        this.prevBtn.addEventListener('click', () => this.prevSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
-        
-        // أحداث النقاط
-        this.dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
-                this.goToSlide(slideIndex);
-            });
-        });
-        
-        // بدء التبديل التلقائي
-        this.startAutoSlide();
-    }
-    showSlide(index) {
-        // إخفاء كل السلايدات
-        this.slides.forEach(slide => {
-            slide.classList.remove('active', 'prev');
-        });
-        
-        this.dots.forEach(dot => dot.classList.remove('active'));
-        
-        // إظهار السلايد الحالي
-        this.slides[index].classList.add('active');
-        this.dots[index].classList.add('active');
-        
-        this.currentSlide = index;
-    }
-    
-    nextSlide() {
-        let nextIndex = this.currentSlide + 1;
-        if (nextIndex >= this.slides.length) {
-            nextIndex = 0;
-        }
-        this.showSlide(nextIndex);
-    }
-    
-    prevSlide() {
-        let prevIndex = this.currentSlide - 1;
-        if (prevIndex < 0) {
-            prevIndex = this.slides.length - 1;
-        }
-        this.showSlide(prevIndex);
-    }
-    
-    goToSlide(index) {
-        this.showSlide(index);
-    }
-    
-    startAutoSlide() {
-        this.stopAutoSlide();
-        this.slideInterval = setInterval(() => {
-            this.nextSlide();
-        }, this.slideDuration);
-    }
-    
-    stopAutoSlide() {
-        if (this.slideInterval) {
-            clearInterval(this.slideInterval);
-        }
-    }
-}
-
-// تشغيل السلايدر عندما تكون الصفحة جاهزة
-document.addEventListener('DOMContentLoaded', function() {
-    new HeroSlider();
-    
-    // تحميل النافبار والفوتير
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data;
-            initNavbar();
-        });
-
-    fetch("footer.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("footer").innerHTML = data;
-            
-            const backToTop = document.getElementById("backToTop");
-            if (backToTop) {
-                backToTop.addEventListener("click", () => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
+        class HeroSlider {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.dots = document.querySelectorAll('.dot');
+                this.prevBtn = document.querySelector('.prev-btn');
+                this.nextBtn = document.querySelector('.next-btn');
+                this.currentSlide = 0;
+                this.slideInterval = null;
+                this.slideDuration = 5000; // 5 ثواني بين كل سلايد
+                
+                this.init();
             }
+            
+            init() {
+                // أحداث الأزرار
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // أحداث النقاط
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                        this.goToSlide(slideIndex);
+                    });
+                });
+                
+                // بدء التبديل التلقائي
+                this.startAutoSlide();
+            }
+            
+            showSlide(index) {
+                // إخفاء كل السلايدات
+                this.slides.forEach(slide => {
+                    slide.classList.remove('active', 'prev');
+                });
+                
+                this.dots.forEach(dot => dot.classList.remove('active'));
+                
+                // إظهار السلايد الحالي
+                this.slides[index].classList.add('active');
+                this.dots[index].classList.add('active');
+                
+                this.currentSlide = index;
+            }
+            
+            nextSlide() {
+                let nextIndex = this.currentSlide + 1;
+                if (nextIndex >= this.slides.length) {
+                    nextIndex = 0;
+                }
+                this.showSlide(nextIndex);
+            }
+            
+            prevSlide() {
+                let prevIndex = this.currentSlide - 1;
+                if (prevIndex < 0) {
+                    prevIndex = this.slides.length - 1;
+                }
+                this.showSlide(prevIndex);
+            }
+            
+            goToSlide(index) {
+                this.showSlide(index);
+            }
+            
+            startAutoSlide() {
+                this.stopAutoSlide();
+                this.slideInterval = setInterval(() => {
+                    this.nextSlide();
+                }, this.slideDuration);
+            }
+            
+            stopAutoSlide() {
+                if (this.slideInterval) {
+                    clearInterval(this.slideInterval);
+                }
+            }
+        }
+
+        // تشغيل السلايدر عندما تكون الصفحة جاهزة
+        document.addEventListener('DOMContentLoaded', function() {
+            new HeroSlider();
+            
+            // تحميل النافبار والفوتير
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                    initNavbar();
+                });
+
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer").innerHTML = data;
+                    
+                    const backToTop = document.getElementById("backToTop");
+                    if (backToTop) {
+                        backToTop.addEventListener("click", () => {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        });
+                    }
+                });
         });
-});
     </script>
 </body>
 </html>
-

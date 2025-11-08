@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدخول الإداري - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            direction: rtl;
+        }
+        
+        .admin-login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+            border-top: 5px solid #e74c3c;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .admin-header .warning {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            background: #fdf2f2;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .btn-admin {
+            width: 100%;
+            padding: 12px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-admin:hover {
+            background: #c0392b;
+        }
+        
+        .security-notice {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-lock"></i> الدخول الإداري</h1>
+            <p>لوحة تحكم VeRandA</p>
+            <div class="warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                هذه الصفحة للإدارة فقط
+            </div>
+        </div>
+        
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label><i class="fas fa-user-shield"></i> اسم المستخدم الإداري</label>
+                <input type="text" class="form-control" name="admin_username" required>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-key"></i> كلمة المرور الإدارية</label>
+                <input type="password" class="form-control" name="admin_password" required>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> الرمز السري</label>
+                <input type="password" class="form-control" name="admin_secret" placeholder="أدخل الرمز السري للإدارة">
+            </div>
+            
+            <button type="submit" class="btn-admin">
+                <i class="fas fa-sign-in-alt"></i> دخول إداري
+            </button>
+        </form>
+        
+        <div class="security-notice">
+            <i class="fas fa-info-circle"></i>
+            الوصول مقصور على المصرح لهم فقط
+        </div>
+    </div>
+
+    <script>
+   document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        username: this.admin_username.value,
+        password: this.admin_password.value,
+        secret: this.admin_secret.value
+    };
+    
+    try {
+        const response = await fetch('https://your-backend-server.com/admin-login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            
+            if (result.success) {
+                localStorage.setItem('adminLoggedIn', 'true');
+                localStorage.setItem('adminLoginTime', new Date().getTime());
+                localStorage.setItem('adminUser', formData.username);
+                localStorage.setItem('adminToken', result.token); // إذا كنت تستخدم JWT
+                
+                window.location.href = 'https://Silver9wolf.github.io/Gradiuation-project/Dashboard/Dashboard.html';
+            } else {
+                alert('❌ بيانات الدخول غير صحيحة!');
+            }
+        } else {
+            alert('❌ خطأ في الاتصال بالخادم!');
+        }
+    } catch (error) {
+        alert('❌ خطأ في الاتصال بالخادم!');
+    }
+});
+    </script>
+</body>
+</html>

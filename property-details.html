@@ -9,446 +9,6 @@
     <link rel="stylesheet" href="nav-footer.css">
     <link rel="stylesheet" href="property-details.css">
 
-    <style>
-       /* ========== PROPERTY DETAILS STYLES ========== */
-.property-details-container {
-    max-width: 1200px;
-    margin: 100px auto 50px;
-    padding: 0 20px;
-}
-
-/* معرض الصور */
-.property-gallery {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 10px;
-    margin-bottom: 40px;
-    height: 500px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.main-image {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.main-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.thumbnail-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.thumbnail {
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    height: calc(33.333% - 7px);
-    position: relative;
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
-
-.thumbnail:hover img {
-    transform: scale(1.05);
-}
-
-/* المعلومات الرئيسية */
-.property-info {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    margin-bottom: 50px;
-}
-
-.property-main-info h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-.property-location {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-}
-
-.property-location i {
-    color: #e74c3c;
-}
-
-.property-price-large {
-    font-size: 2rem;
-    color: #2c3e50;
-    font-weight: bold;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.property-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-    padding: 25px;
-    background: #f8f9fa;
-    border-radius: 12px;
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-}
-
-.feature-item i {
-    color: #3498db;
-    font-size: 1.3rem;
-    width: 30px;
-}
-
-/* الـ Sidebar (الحجز والتقويم) */
-.property-sidebar {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    height: fit-content;
-    position: sticky;
-    top: 100px;
-}
-
-.booking-widget {
-    text-align: center;
-}
-
-.calendar-container {
-    margin-bottom: 25px;
-}
-
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.calendar-header h3 {
-    color: #2c3e50;
-    font-size: 1.3rem;
-}
-
-.calendar-nav {
-    display: flex;
-    gap: 10px;
-}
-
-.calendar-nav button {
-    background: #3498db;
-    color: white;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-bottom: 15px;
-}
-
-.calendar-day-header {
-    text-align: center;
-    font-weight: 600;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    padding: 8px 0;
-}
-
-.calendar-day {
-    text-align: center;
-    padding: 10px 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-}
-
-.calendar-day.available {
-    background: white;
-    color: #2c3e50;
-}
-
-.calendar-day.available:hover {
-    background: #3498db;
-    color: white;
-}
-
-.calendar-day.booked {
-    background: #e74c3c;
-    color: white;
-    cursor: not-allowed;
-}
-
-.calendar-day.empty {
-    background: transparent;
-    cursor: default;
-}
-
-.calendar-day.today {
-    background: #3498db;
-    color: white;
-}
-
-.booking-summary {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.booking-detail {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-.booking-detail.total {
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    margin-top: 10px;
-}
-
-.booking-btn {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(to right, #023E8A, #0077B6);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-bottom: 15px;
-}
-
-.booking-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(2, 62, 138, 0.3);
-}
-
-.favorite-btn-details {
-    width: 100%;
-    padding: 12px;
-    background: white;
-    color: #e74c3c;
-    border: 2px solid #e74c3c;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.favorite-btn-details.active {
-    background: #e74c3c;
-    color: white;
-}
-
-.favorite-btn-details:hover {
-    transform: translateY(-2px);
-}
-
-/* الأقسام الإضافية */
-.details-section {
-    margin-bottom: 40px;
-}
-
-.details-section h2 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-}
-
-.description-text {
-    line-height: 1.8;
-    color: #555;
-    font-size: 1.1rem;
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 12px;
-    border-left: 4px solid #3498db;
-}
-
-.amenities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.amenity-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-.amenity-item:hover {
-    transform: translateX(5px);
-    background: #e8f4fc;
-}
-
-.amenity-item i {
-    color: #27ae60;
-    width: 20px;
-    font-size: 1.1rem;
-}
-
-/* التقييمات */
-.rating-overview {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 30px;
-    padding: 25px;
-    background: #f8f9fa;
-    border-radius: 12px;
-}
-
-.average-rating {
-    text-align: center;
-}
-
-.rating-number {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.rating-stars {
-    color: #f39c12;
-    margin: 10px 0;
-    font-size: 1.2rem;
-}
-
-.review-count {
-    color: #7f8c8d;
-    font-size: 1rem;
-}
-
-/* الخريطة */
-.location-section {
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 12px;
-}
-
-.location-info {
-    margin-bottom: 20px;
-}
-
-.location-info h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-.location-address {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.map-container {
-    height: 300px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-top: 20px;
-    border: 2px solid #ddd;
-}
-
-/* تصميم متجاوب */
-@media (max-width: 968px) {
-    .property-info {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .property-gallery {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    .thumbnail-grid {
-        grid-template-columns: repeat(3, 1fr);
-        height: 150px;
-    }
-    
-    .property-sidebar {
-        position: static;
-    }
-}
-
-@media (max-width: 768px) {
-    .property-details-container {
-        margin-top: 80px;
-    }
-    
-    .property-main-info h1 {
-        font-size: 2rem;
-    }
-    
-    .property-features {
-        grid-template-columns: 1fr;
-    }
-    
-    .amenities-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .rating-overview {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-}
-    </style>
 </head>
 <body>
     <!-- النافبار -->
@@ -465,6 +25,8 @@
     <script src="main.js"></script>
     <script src="navbar.js"></script>
     <script src="property-details.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script>
 // بيانات العقارات
@@ -890,6 +452,9 @@ function changeMainImage(imageUrl) {
 }
 
 function bookProperty(propertyId) {
+    // حفظ معرف العقار في localStorage مؤقتاً
+    localStorage.setItem('currentPropertyId', propertyId);
+    
     // توجيه لصفحة الحجز
     window.location.href = `booking.html?id=${propertyId}`;
 }
@@ -931,6 +496,265 @@ function generateStars(rating) {
     }
     
     return stars;
+}
+
+
+// بدل الدوال الموجودة، استبدل الكود كله من السطر 650 إلى النهاية بهذا الكود:
+
+// متغيرات اختيار التواريخ
+let selectedCheckIn = null;
+let selectedCheckOut = null;
+
+// دالة لتحديث ملخص الحجز في صفحة التفاصيل
+function updateBookingSummaryInDetails(property) {
+    const nightsCount = document.getElementById('nights-count');
+    const serviceFee = document.getElementById('service-fee');
+    const totalPrice = document.getElementById('total-price');
+    
+    if (selectedCheckIn && selectedCheckOut) {
+        const timeDiff = selectedCheckOut.getTime() - selectedCheckIn.getTime();
+        const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        const pricePerNight = parseInt(property.pricePerNight.replace(',', ''));
+        const basePrice = pricePerNight * nights;
+        const serviceFeeAmount = Math.round(basePrice * 0.1);
+        const totalAmount = basePrice + serviceFeeAmount;
+        
+        nightsCount.textContent = nights;
+        serviceFee.textContent = serviceFeeAmount.toLocaleString() + ' SAR';
+        totalPrice.textContent = totalAmount.toLocaleString() + ' SAR';
+        
+        // تحديث زر الحجز
+        updateBookingButton();
+    } else {
+        nightsCount.textContent = '0';
+        serviceFee.textContent = '0 SAR';
+        totalPrice.textContent = '0 SAR';
+    }
+}
+
+// دالة لإعادة تعيين التحديد في التقويم
+function resetCalendarSelection() {
+    document.querySelectorAll('.calendar-day').forEach(day => {
+        day.classList.remove('selected', 'check-in', 'check-out', 'in-range');
+    });
+}
+
+// دالة لتظليل الأيام بين التواريخ المختارة
+function highlightSelectedRange() {
+    if (!selectedCheckIn || !selectedCheckOut) return;
+    
+    document.querySelectorAll('.calendar-day.available').forEach(day => {
+        const dateStr = day.getAttribute('data-date');
+        const date = new Date(dateStr);
+        
+        if (date > selectedCheckIn && date < selectedCheckOut) {
+            day.classList.add('in-range');
+        }
+    });
+}
+
+// دالة لاختيار التواريخ في التقويم
+function setupCalendarSelection(property) {
+    const calendarDays = document.querySelectorAll('.calendar-day.available');
+    
+    calendarDays.forEach(day => {
+        day.addEventListener('click', function() {
+            const dateStr = this.getAttribute('data-date');
+            const selectedDate = new Date(dateStr);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // منع اختيار التواريخ الماضية
+            if (selectedDate < today) {
+                return;
+            }
+            
+            // إذا ما كاينش تاريخ check-in أو إذا المستخدم يبي يغير التواريخ
+            if (!selectedCheckIn || (selectedCheckIn && selectedCheckOut)) {
+                selectedCheckIn = selectedDate;
+                selectedCheckOut = null;
+                resetCalendarSelection();
+                this.classList.add('selected', 'check-in');
+            } else if (selectedCheckIn && !selectedCheckOut) {
+                // التأكد من أن تاريخ check-out بعد check-in
+                if (selectedDate > selectedCheckIn) {
+                    selectedCheckOut = selectedDate;
+                    this.classList.add('selected', 'check-out');
+                    
+                    // حفظ التواريخ في localStorage
+                    saveSelectedDates(selectedCheckIn.toISOString(), selectedCheckOut.toISOString());
+                    
+                    // تحديث ملخص الحجز
+                    updateBookingSummaryInDetails(property);
+                } else {
+                    // إذا تاريخ check-out قبل check-in، نبدا من جديد
+                    selectedCheckIn = selectedDate;
+                    selectedCheckOut = null;
+                    resetCalendarSelection();
+                    this.classList.add('selected', 'check-in');
+                }
+            }
+            
+            // إضافة class للمتواصل بين التواريخ
+            highlightSelectedRange();
+        });
+    });
+}
+
+// دالة لتحميل التواريخ المختارة مسبقاً
+function loadSelectedDates(property) {
+    const savedDates = JSON.parse(localStorage.getItem('selectedDates'));
+    if (savedDates && savedDates.checkIn && savedDates.checkOut) {
+        selectedCheckIn = new Date(savedDates.checkIn);
+        selectedCheckOut = new Date(savedDates.checkOut);
+        
+        // تحديث الواجهة
+        updateBookingSummaryInDetails(property);
+        highlightSelectedDatesInCalendar();
+    }
+}
+
+// دالة لتظليل التواريخ المختارة في التقويم
+function highlightSelectedDatesInCalendar() {
+    if (!selectedCheckIn || !selectedCheckOut) return;
+    
+    resetCalendarSelection();
+    
+    document.querySelectorAll('.calendar-day.available').forEach(day => {
+        const dateStr = day.getAttribute('data-date');
+        const date = new Date(dateStr);
+        
+        if (date.getTime() === selectedCheckIn.getTime()) {
+            day.classList.add('selected', 'check-in');
+        } else if (date.getTime() === selectedCheckOut.getTime()) {
+            day.classList.add('selected', 'check-out');
+        } else if (date > selectedCheckIn && date < selectedCheckOut) {
+            day.classList.add('in-range');
+        }
+    });
+}
+
+// دالة توليد التقويم (معدلة)
+function generateCalendar(property) {
+    const calendar = document.getElementById('calendar');
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+    
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const startingDay = firstDay.getDay();
+    
+    let calendarHTML = `
+        <div class="calendar-grid">
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+    `;
+    
+    // الأيام الفارغة قبل بداية الشهر
+    for (let i = 0; i < startingDay; i++) {
+        calendarHTML += `<div class="calendar-day empty"></div>`;
+    }
+    
+    // أيام الشهر
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dateStr = `${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const date = new Date(dateStr);
+        const isBooked = property.bookedDates.includes(dateStr);
+        const isToday = today.getDate() === day && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+        const isPast = date < today;
+        
+        let dayClass = "calendar-day available";
+        if (isBooked) dayClass = "calendar-day booked";
+        if (isToday) dayClass += " today";
+        if (isPast) dayClass = "calendar-day empty";
+        
+        calendarHTML += `<div class="${dayClass}" data-date="${dateStr}">${day}</div>`;
+    }
+    
+    calendarHTML += `</div>`;
+    calendar.innerHTML = calendarHTML;
+    
+    // تحديث العنوان
+    document.querySelector('.calendar-header h3').textContent = 
+        `${monthNames[currentMonth]} ${currentYear}`;
+    
+    // إعداد اختيار التواريخ
+    setupCalendarSelection(property);
+    
+    // تحميل التواريخ المختارة مسبقاً إذا وجدت
+    loadSelectedDates(property);
+}
+
+// دوال التحكم في التقويم (معدلة)
+function changeMonth(direction) {
+    currentMonth += direction;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    
+    const propertyId = parseInt(new URLSearchParams(window.location.search).get('id'));
+    const property = properties.find(p => p.id === propertyId);
+    generateCalendar(property);
+}
+
+// دالة لحفظ التواريخ المختارة
+function saveSelectedDates(checkIn, checkOut) {
+    const dates = {
+        checkIn: checkIn,
+        checkOut: checkOut
+    };
+    localStorage.setItem('selectedDates', JSON.stringify(dates));
+}
+
+// دالة لتحديث زر الحجز في صفحة التفاصيل
+function updateBookingButton() {
+    const selectedDates = JSON.parse(localStorage.getItem('selectedDates'));
+    if (selectedDates && selectedDates.checkIn && selectedDates.checkOut) {
+        const checkIn = new Date(selectedDates.checkIn);
+        const checkOut = new Date(selectedDates.checkOut);
+        const checkInFormatted = checkIn.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        const checkOutFormatted = checkOut.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        
+        // تحديث نص الزر ليعرض التواريخ المختارة
+        const bookBtn = document.querySelector('.booking-btn');
+        if (bookBtn) {
+            bookBtn.innerHTML = `<i class="fas fa-calendar-check"></i> Book ${checkInFormatted} - ${checkOutFormatted}`;
+        }
+    }
+}
+
+// دالة الحجز (معدلة)
+function bookProperty(propertyId) {
+    // التحقق من وجود تواريخ مختارة
+    const selectedDates = JSON.parse(localStorage.getItem('selectedDates'));
+    if (!selectedDates || !selectedDates.checkIn || !selectedDates.checkOut) {
+        alert('Please select check-in and check-out dates first.');
+        return;
+    }
+    
+    // حفظ معرف العقار في localStorage مؤقتاً
+    localStorage.setItem('currentPropertyId', propertyId);
+    
+    // توجيه لصفحة الحجز
+    window.location.href = `booking.html?id=${propertyId}`;
 }
 
 // تحميل التفاصيل عند فتح الصفحة

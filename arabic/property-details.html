@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-footer.css">
+    <link rel="stylesheet" href="property-details.css">
+
+</head>
+<body>
+    <!-- النافبار -->
+    <div id="navbar"></div>
+
+    <!-- قسم التفاصيل الرئيسي -->
+    <div class="property-details-container" id="property-details">
+        <!-- المحتوى سيتم تحميله بواسطة الجافاسكريبت -->
+    </div>
+
+    <!-- الفوتر -->
+    <div id="footer"></div>
+
+    <script src="main.js"></script>
+    <script src="navbar.js"></script>
+    <script src="property-details.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+// بيانات العقارات
+const properties = [
+    {
+        id: 1,
+        title: "استراحة المرجان-طرابلس",
+        type: "resthouse",
+        images: [
+            "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        ],
+        description: "استراحة أنيقة في موقع مميز مع إطلالات خلابة وتصميم داخلي عصري",
+        rooms: 4,
+        capacity: 6,
+        rating: 4.5,
+        reviews: 128,
+        pricePerNight: "1200",
+        location: "طرابلس, طريق الشط",
+        address: "طرابلس, طريق الشط بالقرب من الفندق الكبير",
+        amenities: ["انترنت", "حوض سباحة", "موقف سيارات", "أمن", "تكييف"],
+        bookedDates: ["2024-01-15", "2024-01-16", "2024-01-20", "2024-01-21"]
+    },
+    {
+        id: 2,
+        title: "عقار العائلة-الخمس",
+        type: "villa",
+        images: [
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        ],
+        description: "فيلا فاخرة مع حديقة خاصة وحوض سباحة، تصميم أنيق ومساحات واسعة",
+        rooms: 6,
+        capacity: 10,
+        rating: 4.8,
+        reviews: 76,
+        pricePerNight: "1500",
+        location: "الخمس",
+        address: "الخمس",
+        amenities: ["انترنت", "حوض سباحة", "موقف سيارات", "أمن", "تكييف"],
+        bookedDates: ["2024-01-10", "2024-01-11", "2024-01-18", "2024-01-19"]
+    },
+    {
+        id: 3,
+        title: "قرية سيرين-القويعه",
+        type: "chalet",
+        images: [
+            "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        ],
+        description: "شاليه فاخر مع إطلالة بحرية",
+        rooms: 5,
+        capacity: 8,
+        rating: 4.9,
+        reviews: 54,
+        pricePerNight: "2000",
+        location: "القويعه",
+        address: "القويعه",
+        amenities: ["انترنت", "حوض سباحة", "موقف سيارات", "أمن", "تكييف", "صالة رياضة"],
+        bookedDates: ["2024-01-12", "2024-01-13", "2024-01-22", "2024-01-23"]
+    },
+    {
+        id: 4,
+        title: "استراحة سيري-طرابلس",
+        type: "resthouse",
+        images: [
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        ],
+        description: "اطلالة بحرية",
+        rooms: 3,
+        capacity: 4,
+        rating: 4.2,
+        reviews: 89,
+        pricePerNight: "800",
+        location: "طرابلس",
+        address: "طرابلس",
+        amenities: ["انترنت", "حوض سباحة", "موقف سيارات", "أمن", "تكييف"],
+        bookedDates: ["2024-01-14", "2024-01-15", "2024-01-24", "2024-01-25"]
+    },
+    {
+        id: 5,
+        title: "رويال-القره بولي",
+        type: "villa",
+        images: [
+            "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        ],
+        description: "فيلا عائلية بتصميم عصري وحديث",
+        rooms: 5,
+        capacity: 8,
+        rating: 4.6,
+        reviews: 42,
+        pricePerNight: "1350",
+        location: "القره بولي",
+        address: "القره بولي",
+        amenities: ["انترنت", "حوض سباحة", "موقف سيارات", "أمن", "تكييف"],
+        bookedDates: ["2024-01-16", "2024-01-17", "2024-01-26", "2024-01-27"]
+    },
+    {
+        id: 6,
+        title: "السرايا-زوارة",
+        type: "chalet",
+        images: [
+            "https://images.unsplash.com/photo-1540518614846-7eded102d7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "arabic/image/frames-for-your-heart-mR1CIDduGLc-unsplash.jpg"
+        ],
+        description: "اطلالة بحرية",
+        rooms: 6,
+        capacity: 10,
+        rating: 4.7,
+        reviews: 31,
+        pricePerNight: "1100",
+        location: "زوارة",
+        address: "زوارة",
+        amenities: ["انترنت", "حوض سباحة", "موقف سيارات", "أمن", "تكييف", "صالة رياضة"],
+        bookedDates: ["2024-01-18", "2024-01-19", "2024-01-28", "2024-01-29"]
+    }
+];
+
+// متغيرات التقويم
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+
+// دالة لتحميل تفاصيل العقار
+function loadPropertyDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const propertyId = parseInt(urlParams.get('id'));
+    
+    const property = properties.find(p => p.id === propertyId);
+    const container = document.getElementById('property-details');
+    
+    if (!property) {
+        container.innerHTML = `
+            <div class="error-message" style="text-align: center; padding: 100px 20px;">
+                <h2>التفاصيل لم يتم إيجادها</h2>
+                <p>التفاصيل التي تبحث عنها ليست موجودة.</p>
+                <a href="explore.html" style="color: #0077B6; text-decoration: none;">← الرجوع إلى التفاصيل</a>
+            </div>
+        `;
+        return;
+    }
+    
+    // توليد النجوم
+    const stars = generateStars(property.rating);
+    
+    // التحقق من المفضلة
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const isFavorite = favorites.includes(property.id);
+    
+    // توليد معرض الصور
+    const galleryHTML = generateGallery(property.images);
+    
+    // توليد المرافق
+    const amenitiesHTML = generateAmenities(property.amenities);
+    
+    container.innerHTML = `
+        <!-- معرض الصور -->
+        <div class="property-gallery">
+            ${galleryHTML}
+        </div>
+        
+        <!-- المعلومات الرئيسية -->
+        <div class="property-info">
+            <div class="property-main-info">
+                <h1>${property.title}</h1>
+                <div class="property-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${property.location}</span>
+                </div>
+                
+                <div class="property-price-large">
+                    <span style="color: #0077B6;">${property.pricePerNight} </span>
+                    د.ل/الليلة
+                </div>
+                
+                <div class="property-features">
+                    <div class="feature-item">
+                        <i class="fas fa-door-open"></i>
+                        <span>${property.rooms} غرف</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-friends"></i>
+                        <span>${property.capacity} أشخاص</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bed"></i>
+                        <span>${property.rooms - 1} سرير</span>
+                    </div>
+                </div>
+                
+                <!-- الوصف -->
+                <div class="details-section">
+                    <h2>وصـــــف</h2>
+                    <p class="description-text">${property.description}</p>
+                </div>
+                
+                <!-- المرافق -->
+                <div class="details-section">
+                    <h2>المرافــــق</h2>
+                    <div class="amenities-grid">
+                        ${amenitiesHTML}
+                    </div>
+                </div>
+                
+                <!-- التقييم -->
+                <div class="details-section">
+                    <h2>التــقــيــيــم</h2>
+                    <div class="rating-overview">
+                        <div class="average-rating">
+                            <div class="rating-number">${property.rating}</div>
+                            <div class="rating-stars">${stars}</div>
+                            <div class="review-count">${property.reviews} رأي</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <p style="color: #555; line-height: 1.6;">عقار رائع وخدمة ممتازة. موقع مثالي وإطلالات خلابة!</p>
+                            <p style="color: #7f8c8d; margin-top: 10px;">- محمد أحمد</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- الموقع -->
+                <div class="details-section">
+                    <h2>الــموقــع</h2>
+                    <div class="location-section">
+                        <div class="location-info">
+                            <h3>العنــوان</h3>
+                            <p class="location-address">
+                                <i class="fas fa-map-marker-alt" style="color: #e74c3c;"></i>
+                                ${property.address}
+                            </p>
+                        </div>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/place/%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9%D8%A9+%D8%A7%D9%84%D9%84%D9%8A%D8%A8%D9%8A%D8%A9-%D9%84%D9%84%D8%B9%D9%84%D9%88%D9%85+%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9+%D9%88%D8%A7%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D9%8A%D8%A9%E2%80%AD/@32.8233651,13.260534,15z/data=!4m6!3m5!1s0x13a893289b97dc75:0x8c18ea45f65bb86f!8m2!3d32.8263859!4d13.2528907!16s%2Fg%2F11pdskwl8c?authuser=0&entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الـ Sidebar (الحجز والتقويم) -->
+            <div class="property-sidebar">
+                <div class="booking-widget">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <h3>حدد التواريخ</h3>
+                            <div class="calendar-nav">
+                                <button onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                                <button onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div id="calendar"></div>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <div class="booking-detail">
+                            <span>سعر الليلة الواحدة:</span>
+                            <span>${property.pricePerNight} د.ل</span>
+                        </div>
+                        <div class="booking-detail">
+                            <span>عدد الأيام</span>
+                            <span id="nights-count">0</span>
+                        </div>
+                        <div class="booking-detail">
+                            <span>رسوم الخدمة:</span>
+                            <span id="service-fee">0 د.ل</span>
+                        </div>
+                        <div class="booking-detail total">
+                            <span>الإجمالي:</span>
+                            <span id="total-price">0 د.ل</span>
+                        </div>
+                    </div>
+                    
+                    <button class="booking-btn" onclick="bookProperty(${property.id})">
+                        <i class="fas fa-calendar-check"></i> إحجز الآن
+                    </button>
+                    <button class="favorite-btn-details ${isFavorite ? 'active' : ''}" 
+                            onclick="toggleFavorite(${property.id})" id="favorite-btn">
+                        <i class="${isFavorite ? 'fas' : 'far'} fa-heart"></i>
+                        ${isFavorite ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // توليد التقويم بعد تحميل المحتوى
+    generateCalendar(property);
+}
+
+// دالة توليد معرض الصور
+function generateGallery(images) {
+    const mainImage = images[0];
+    const thumbnails = images.map((img, index) => `
+        <div class="thumbnail" onclick="changeMainImage('${img}')">
+            <img src="${img}" alt="Property Image ${index + 1}">
+        </div>
+    `).join('');
+    
+    return `
+        <div class="main-image">
+            <img src="${mainImage}" alt="Property Main Image" id="main-image">
+        </div>
+        <div class="thumbnail-grid">
+            ${thumbnails}
+        </div>
+    `;
+}
+
+// دالة توليد المرافق
+function generateAmenities(amenities) {
+    const amenityIcons = {
+        "انترنت": "fa-wifi",
+        "حوض سباحة": "fa-swimming-pool",
+        "موقف سيارات": "fa-car",
+        "صالة رياضة": "fa-dumbbell",
+        "أمن": "fa-shield-alt",
+        "تكييف": "fa-snowflake"
+    };
+    
+    return amenities.map(amenity => `
+        <div class="amenity-item">
+            <i class="fas ${amenityIcons[amenity] || 'fa-check'}"></i>
+            <span>${amenity}</span>
+        </div>
+    `).join('');
+}
+
+// دالة توليد التقويم
+function generateCalendar(property) {
+    const calendar = document.getElementById('calendar');
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+    
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const startingDay = firstDay.getDay();
+    
+    let calendarHTML = `
+        <div class="calendar-grid">
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+    `;
+    
+    // الأيام الفارغة قبل بداية الشهر
+    for (let i = 0; i < startingDay; i++) {
+        calendarHTML += `<div class="calendar-day empty"></div>`;
+    }
+    
+    // أيام الشهر
+    const today = new Date();
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dateStr = `${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const isBooked = property.bookedDates.includes(dateStr);
+        const isToday = today.getDate() === day && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+        
+        let dayClass = "calendar-day available";
+        if (isBooked) dayClass = "calendar-day booked";
+        if (isToday) dayClass += " today";
+        
+        calendarHTML += `<div class="${dayClass}" data-date="${dateStr}">${day}</div>`;
+    }
+    
+    calendarHTML += `</div>`;
+    calendar.innerHTML = calendarHTML;
+    
+    // تحديث العنوان
+    document.querySelector('.calendar-header h3').textContent = 
+        `${monthNames[currentMonth]} ${currentYear}`;
+}
+
+// دوال التحكم في التقويم
+function changeMonth(direction) {
+    currentMonth += direction;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    
+    const propertyId = parseInt(new URLSearchParams(window.location.search).get('id'));
+    const property = properties.find(p => p.id === propertyId);
+    generateCalendar(property);
+}
+
+// الدوال المساعدة
+function changeMainImage(imageUrl) {
+    document.getElementById('main-image').src = imageUrl;
+}
+
+function bookProperty(propertyId) {
+    // حفظ معرف العقار في localStorage مؤقتاً
+    localStorage.setItem('currentPropertyId', propertyId);
+    
+    // توجيه لصفحة الحجز
+    window.location.href = `booking.html?id=${propertyId}`;
+}
+
+function toggleFavorite(propertyId) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const index = favorites.indexOf(propertyId);
+    const button = document.getElementById('favorite-btn');
+    
+    if (index === -1) {
+        favorites.push(propertyId);
+        button.innerHTML = '<i class="fas fa-heart"></i> Remove from Favorites';
+        button.classList.add('active');
+    } else {
+        favorites.splice(index, 1);
+        button.innerHTML = '<i class="far fa-heart"></i> Add to Favorites';
+        button.classList.remove('active');
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+function generateStars(rating) {
+    let stars = '';
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    
+    for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+    }
+    
+    if (hasHalfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+    }
+    
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+    }
+    
+    return stars;
+}
+
+// متغيرات اختيار التواريخ
+let selectedCheckIn = null;
+let selectedCheckOut = null;
+
+// دالة لتحديث ملخص الحجز في صفحة التفاصيل
+function updateBookingSummaryInDetails(property) {
+    const nightsCount = document.getElementById('nights-count');
+    const serviceFee = document.getElementById('service-fee');
+    const totalPrice = document.getElementById('total-price');
+    
+    if (selectedCheckIn && selectedCheckOut) {
+        const timeDiff = selectedCheckOut.getTime() - selectedCheckIn.getTime();
+        const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        const pricePerNight = parseInt(property.pricePerNight.replace(',', ''));
+        const basePrice = pricePerNight * nights;
+        const serviceFeeAmount = Math.round(basePrice * 0);
+        const totalAmount = basePrice + serviceFeeAmount;
+        
+        nightsCount.textContent = nights;
+        serviceFee.textContent = serviceFeeAmount.toLocaleString() + ' د.ل';
+        totalPrice.textContent = totalAmount.toLocaleString() + ' د.ل';
+        
+        // تحديث زر الحجز
+        updateBookingButton();
+    } else {
+        nightsCount.textContent = '0';
+        serviceFee.textContent = '0 د.ل';
+        totalPrice.textContent = '0 د.ل';
+    }
+}
+
+// دالة لإعادة تعيين التحديد في التقويم
+function resetCalendarSelection() {
+    document.querySelectorAll('.calendar-day').forEach(day => {
+        day.classList.remove('selected', 'check-in', 'check-out', 'in-range');
+    });
+}
+
+// دالة لتظليل الأيام بين التواريخ المختارة
+function highlightSelectedRange() {
+    if (!selectedCheckIn || !selectedCheckOut) return;
+    
+    document.querySelectorAll('.calendar-day.available').forEach(day => {
+        const dateStr = day.getAttribute('data-date');
+        const date = new Date(dateStr);
+        
+        if (date > selectedCheckIn && date < selectedCheckOut) {
+            day.classList.add('in-range');
+        }
+    });
+}
+
+// دالة لاختيار التواريخ في التقويم
+function setupCalendarSelection(property) {
+    const calendarDays = document.querySelectorAll('.calendar-day.available');
+    
+    calendarDays.forEach(day => {
+        day.addEventListener('click', function() {
+            const dateStr = this.getAttribute('data-date');
+            const selectedDate = new Date(dateStr);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // منع اختيار التواريخ الماضية
+            if (selectedDate < today) {
+                return;
+            }
+            
+            // إذا ما كاينش تاريخ check-in أو إذا المستخدم يبي يغير التواريخ
+            if (!selectedCheckIn || (selectedCheckIn && selectedCheckOut)) {
+                selectedCheckIn = selectedDate;
+                selectedCheckOut = null;
+                resetCalendarSelection();
+                this.classList.add('selected', 'check-in');
+            } else if (selectedCheckIn && !selectedCheckOut) {
+                // التأكد من أن تاريخ check-out بعد check-in
+                if (selectedDate > selectedCheckIn) {
+                    selectedCheckOut = selectedDate;
+                    this.classList.add('selected', 'check-out');
+                    
+                    // حفظ التواريخ في localStorage
+                    saveSelectedDates(selectedCheckIn.toISOString(), selectedCheckOut.toISOString());
+                    
+                    // تحديث ملخص الحجز
+                    updateBookingSummaryInDetails(property);
+                } else {
+                    // إذا تاريخ check-out قبل check-in، نبدا من جديد
+                    selectedCheckIn = selectedDate;
+                    selectedCheckOut = null;
+                    resetCalendarSelection();
+                    this.classList.add('selected', 'check-in');
+                }
+            }
+            
+            // إضافة class للمتواصل بين التواريخ
+            highlightSelectedRange();
+        });
+    });
+}
+
+// دالة لتحميل التواريخ المختارة مسبقاً
+function loadSelectedDates(property) {
+    const savedDates = JSON.parse(localStorage.getItem('selectedDates'));
+    if (savedDates && savedDates.checkIn && savedDates.checkOut) {
+        selectedCheckIn = new Date(savedDates.checkIn);
+        selectedCheckOut = new Date(savedDates.checkOut);
+        
+        // تحديث الواجهة
+        updateBookingSummaryInDetails(property);
+        highlightSelectedDatesInCalendar();
+    }
+}
+
+// دالة لتظليل التواريخ المختارة في التقويم
+function highlightSelectedDatesInCalendar() {
+    if (!selectedCheckIn || !selectedCheckOut) return;
+    
+    resetCalendarSelection();
+    
+    document.querySelectorAll('.calendar-day.available').forEach(day => {
+        const dateStr = day.getAttribute('data-date');
+        const date = new Date(dateStr);
+        
+        if (date.getTime() === selectedCheckIn.getTime()) {
+            day.classList.add('selected', 'check-in');
+        } else if (date.getTime() === selectedCheckOut.getTime()) {
+            day.classList.add('selected', 'check-out');
+        } else if (date > selectedCheckIn && date < selectedCheckOut) {
+            day.classList.add('in-range');
+        }
+    });
+}
+
+// دالة توليد التقويم (معدلة)
+function generateCalendar(property) {
+    const calendar = document.getElementById('calendar');
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+    
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const startingDay = firstDay.getDay();
+    
+    let calendarHTML = `
+        <div class="calendar-grid">
+            <div class="calendar-day-header">Sun</div>
+            <div class="calendar-day-header">Mon</div>
+            <div class="calendar-day-header">Tue</div>
+            <div class="calendar-day-header">Wed</div>
+            <div class="calendar-day-header">Thu</div>
+            <div class="calendar-day-header">Fri</div>
+            <div class="calendar-day-header">Sat</div>
+    `;
+    
+    // الأيام الفارغة قبل بداية الشهر
+    for (let i = 0; i < startingDay; i++) {
+        calendarHTML += `<div class="calendar-day empty"></div>`;
+    }
+    
+    // أيام الشهر
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        const dateStr = `${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const date = new Date(dateStr);
+        const isBooked = property.bookedDates.includes(dateStr);
+        const isToday = today.getDate() === day && today.getMonth() === currentMonth && today.getFullYear() === currentYear;
+        const isPast = date < today;
+        
+        let dayClass = "calendar-day available";
+        if (isBooked) dayClass = "calendar-day booked";
+        if (isToday) dayClass += " today";
+        if (isPast) dayClass = "calendar-day empty";
+        
+        calendarHTML += `<div class="${dayClass}" data-date="${dateStr}">${day}</div>`;
+    }
+    
+    calendarHTML += `</div>`;
+    calendar.innerHTML = calendarHTML;
+    
+    // تحديث العنوان
+    document.querySelector('.calendar-header h3').textContent = 
+        `${monthNames[currentMonth]} ${currentYear}`;
+    
+    // إعداد اختيار التواريخ
+    setupCalendarSelection(property);
+    
+    // تحميل التواريخ المختارة مسبقاً إذا وجدت
+    loadSelectedDates(property);
+}
+
+// دوال التحكم في التقويم (معدلة)
+function changeMonth(direction) {
+    currentMonth += direction;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    
+    const propertyId = parseInt(new URLSearchParams(window.location.search).get('id'));
+    const property = properties.find(p => p.id === propertyId);
+    generateCalendar(property);
+}
+
+// دالة لحفظ التواريخ المختارة
+function saveSelectedDates(checkIn, checkOut) {
+    const dates = {
+        checkIn: checkIn,
+        checkOut: checkOut
+    };
+    localStorage.setItem('selectedDates', JSON.stringify(dates));
+}
+
+// دالة لتحديث زر الحجز في صفحة التفاصيل
+function updateBookingButton() {
+    const selectedDates = JSON.parse(localStorage.getItem('selectedDates'));
+    if (selectedDates && selectedDates.checkIn && selectedDates.checkOut) {
+        const checkIn = new Date(selectedDates.checkIn);
+        const checkOut = new Date(selectedDates.checkOut);
+        const checkInFormatted = checkIn.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        const checkOutFormatted = checkOut.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        
+        // تحديث نص الزر ليعرض التواريخ المختارة
+        const bookBtn = document.querySelector('.booking-btn');
+        if (bookBtn) {
+            bookBtn.innerHTML = `<i class="fas fa-calendar-check"></i> حجز ${checkInFormatted} - ${checkOutFormatted}`;
+        }
+    }
+}
+
+// دالة الحجز (معدلة)
+function bookProperty(propertyId) {
+    // التحقق من وجود تواريخ مختارة
+    const selectedDates = JSON.parse(localStorage.getItem('selectedDates'));
+    if (!selectedDates || !selectedDates.checkIn || !selectedDates.checkOut) {
+        alert('Please select check-in and check-out dates first.');
+        return;
+    }
+    
+    // حفظ معرف العقار في localStorage مؤقتاً
+    localStorage.setItem('currentPropertyId', propertyId);
+    
+    // توجيه لصفحة الحجز
+    window.location.href = `booking.html?id=${propertyId}`;
+}
+
+// تحميل التفاصيل عند فتح الصفحة
+document.addEventListener('DOMContentLoaded', loadPropertyDetails);
+    </script>
+</body>
+</html>

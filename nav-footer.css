@@ -163,7 +163,7 @@ list-style: none;
 }
 .dropdown_menu.open {
 
-    height: 350px;
+    height: 450px;
     position: fixed !important;
     top: 60px !important;
 }
@@ -200,8 +200,145 @@ list-style: none;
     }
 }
 
+/* تنسيقات زر اللغات المخفي */
+.language-dropdown {
+    position: relative;
+    margin-left: 15px;
+}
 
-        
+.language-dropdown-mobile {
+    position: relative;
+    margin: 10px 0;
+}
+
+.lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(2, 62, 138, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #0077B6;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.lang-trigger:hover {
+    background: rgba(2, 62, 138, 0.1);
+    border-color: #0077B6;
+}
+
+.lang-trigger i {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.language-dropdown:hover .lang-trigger i,
+.language-dropdown-mobile:hover .lang-trigger i {
+    transform: rotate(180deg);
+}
+
+.lang-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 120px;
+}
+
+.language-dropdown:hover .lang-options,
+.language-dropdown-mobile:hover .lang-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(5px);
+}
+
+.lang-option {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+    color: #333;
+}
+
+.lang-option:hover {
+    background: #f8f9fa;
+    color: #0077B6;
+}
+
+.lang-option:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.lang-option:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+/* للغة العربية */
+[dir="rtl"] .language-dropdown {
+    margin-right: 15px;
+    margin-left: 0;
+}
+
+[dir="rtl"] .lang-options {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .lang-option {
+    text-align: right;
+}
+
+/* في الموبايل */
+@media (max-width: 992px) {
+    .language-dropdown {
+        display: none;
+    }
+    
+    .language-dropdown-mobile {
+        display: block;
+    }
+    
+    .lang-options {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+    
+    .lang-option {
+        text-align: center;
+        padding: 8px;
+        border-radius: 20px !important;
+        margin: 2px 0;
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media (min-width: 993px) {
+    .language-dropdown-mobile {
+        display: none;
+    }
+}   
 
 .footer {
   background-color: #000120; /* لون غامق أنيق */

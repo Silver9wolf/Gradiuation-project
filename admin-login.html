@@ -138,7 +138,7 @@
     </div>
 
     <script>
-        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+    document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const username = this.admin_username.value;
@@ -155,9 +155,10 @@
         password === adminCredentials.password && 
         secret === adminCredentials.secret) {
         
-        // ⬇️ البيانات الصحيحة الآن
-        const githubUsername = 'Silver9wolf';
-        const repoName = 'Gradiuation-project';
+        // ⬇️⬇️⬇️ أهم جزء - حفظ حالة الدخول ⬇️⬇️⬇️
+        localStorage.setItem('adminLoggedIn', 'true');
+        localStorage.setItem('adminLoginTime', new Date().getTime());
+        localStorage.setItem('adminUser', username);
         
         const dashboardUrl = `https://Silver9wolf.github.io/Gradiuation-project/Dashboard/Dashboard.html`;
         

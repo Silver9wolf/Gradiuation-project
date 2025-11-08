@@ -7,6 +7,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
         <link rel="stylesheet" href="dashboard.css">
 
+<script>
+// التحقق من الدخول في كل الصفحات
+document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('adminLoggedIn');
+    const loginTime = localStorage.getItem('adminLoginTime');
+    const currentTime = new Date().getTime();
+    
+    // إذا لم يكن مسجل دخول أو انتهت الجلسة (8 ساعات)
+    if (!isLoggedIn || (currentTime - loginTime > 8 * 60 * 60 * 1000)) {
+        localStorage.removeItem('adminLoggedIn');
+        localStorage.removeItem('adminLoginTime');
+        window.location.href = 'https://Silver9wolf.github.io/Gradiuation-project/admin-login.html';
+        return;
+    }
+    
+    // إذا مسجل دخول، أظهر المحتوى
+    document.body.style.display = 'block';
+    
+    // تحديث وقت الدخول
+    localStorage.setItem('adminLoginTime', new Date().getTime());
+});
+
+// تسجيل الخروج
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutBtn = document.querySelector('a[href="#"]');
+    if (logoutBtn && logoutBtn.querySelector('.fa-sign-out-alt')) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                localStorage.removeItem('adminLoggedIn');
+                localStorage.removeItem('adminLoginTime');
+                window.location.href = 'https://Silver9wolf.github.io/Gradiuation-project/admin-login.html';
+            }
+        });
+    }
+});
+</script>
+
     <style>
         /* تنسيقات خاصة بالمستخدمين */
         .user-card {
@@ -284,55 +322,6 @@
             </div>
         </main>
     </div>
-    <script>
-        // التحقق من صحة الدخول الإداري
-function checkAdminAuth() {
-    const isLoggedIn = localStorage.getItem('adminLoggedIn');
-    const loginTime = localStorage.getItem('adminLoginTime');
-    const currentTime = new Date().getTime();
     
-    // إذا لم يكن مسجل دخول أو انتهت الجلسة (8 ساعات)
-    if (!isLoggedIn || (currentTime - loginTime > 8 * 60 * 60 * 1000)) {
-        localStorage.removeItem('adminLoggedIn');
-        localStorage.removeItem('adminLoginTime');
-        window.location.href = '../admin-login.html';
-        return false;
-    }
-    
-    return true;
-}
-
-// التحقق عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', function() {
-    if (!checkAdminAuth()) {
-        return;
-    }
-    
-    // تحديث وقت الدخول
-    localStorage.setItem('adminLoginTime', new Date().getTime());
-});
-
-// إضافة حدث تسجيل الخروج
-document.addEventListener('DOMContentLoaded', function() {
-    const logoutButtons = document.querySelectorAll('.menu-item[href="#"]');
-    logoutButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (confirm('هل تريد تسجيل الخروج من النظام الإداري؟')) {
-                localStorage.removeItem('adminLoggedIn');
-                localStorage.removeItem('adminLoginTime');
-                window.location.href = '../admin-login.html';
-            }
-        });
-    });
-});
-
-// إظهار المحتوى بعد التحقق من الصلاحية
-document.addEventListener('DOMContentLoaded', function() {
-    if (checkAdminAuth()) {
-        document.body.classList.add('loaded');
-    }
-});
-    </script>
 </body>
 </html>

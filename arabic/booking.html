@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Booking - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-footer.css">
+    
+</head>
+<body>
+    <!-- النافبار -->
+    <div id="navbar"></div>
+
+    <!-- قسم الحجز الرئيسي -->
+    <div class="booking-container">
+        <div class="booking-header">
+            <h1>Complete Your Booking</h1>
+            <p>Review your details and confirm your reservation</p>
+        </div>
+<div style="text-align: left; margin-bottom: 20px;">
+    <a href="#" onclick="goBackToProperty()" style="color: #0077B6; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+        <i class="fas fa-arrow-left"></i>
+        Back to Property Details
+    </a>
+</div>
+        <div class="booking-content">
+            <!-- معلومات الحجز -->
+            <div class="booking-left">
+                <!-- معلومات العقار -->
+                <div class="property-summary" id="property-summary">
+                    <!-- سيتم تحميله بواسطة الجافاسكريبت -->
+                </div>
+                
+
+                <!-- نموذج معلومات الزبون -->
+                <div class="booking-form-section">
+                    <h2 class="form-section-title">Guest Information</h2>
+                    
+                    <div class="alert" id="booking-alert"></div>
+                    
+                    <form id="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idNumber">ID Number *</label>
+                            <input type="text" id="idNumber" name="idNumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specialRequests">Special Requests</label>
+                            <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requirements or requests..."></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ملخص الحجز -->
+            <div class="booking-right">
+                <div class="booking-summary-section">
+                    <h2 class="form-section-title">Booking Summary</h2>
+                    
+                    <div class="booking-dates">
+                        <div class="date-item">
+                            <span>Check-in:</span>
+                            <strong id="checkin-date">--/--/----</strong>
+                        </div>
+                        <div class="date-item">
+                            <span>Check-out:</span>
+                            <strong id="checkout-date">--/--/----</strong>
+                        </div>
+                        <div class="date-item">
+                            <span>Nights:</span>
+                            <strong id="nights-count">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="price-breakdown">
+                        <div class="price-item">
+                            <span>Price per night</span>
+                            <span id="price-per-night">0 SAR</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Number of nights</span>
+                            <span id="nights-display">0</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Service fee</span>
+                            <span id="service-fee">0 SAR</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Tourism fee</span>
+                            <span id="tourism-fee">0 SAR</span>
+                        </div>
+                        <div class="price-item total">
+                            <span>Total Amount</span>
+                            <span id="total-amount">0 SAR</span>
+                        </div>
+                    </div>
+
+                    <div class="terms-agreement">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms-agree" required>
+                            <label for="terms-agree">
+                                I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and 
+                                <a href="#" class="terms-link">Cancellation Policy</a> *
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="book-now-btn" id="confirm-booking-btn" disabled>
+                        <i class="fas fa-lock"></i>
+                        Confirm Booking
+                    </button>
+
+                    <p style="text-align: center; margin-top: 15px; color: #7f8c8d; font-size: 0.9rem;">
+                        Secure payment • Free cancellation within 24 hours
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <div id="footer"></div>
+
+    <script src="main.js"></script>
+    <script src="navbar.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+    // بيانات العقارات
+    const properties = [
+        {
+            id: 1,
+            title: "Luxury Rest House in Riyadh",
+            type: "resthouse",
+            image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            location: "Al Olaya District, Riyadh",
+            pricePerNight: "1,200",
+            rooms: 4,
+            capacity: 6
+        },
+        {
+            id: 2,
+            title: "Premium Villa in Palm District",
+            type: "villa",
+            image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            location: "Palm District, Jeddah",
+            pricePerNight: "2,500",
+            rooms: 6,
+            capacity: 10
+        },
+        {
+            id: 3,
+            title: "Chalet with Panoramic View",
+            type: "chalet",
+            image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            location: "Mountain View, Abha",
+            pricePerNight: "3,200",
+            rooms: 5,
+            capacity: 8
+        },
+        {
+            id: 4,
+            title: "Modern Rest House in Media District",
+            type: "resthouse",
+            image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            location: "Media District, Riyadh",
+            pricePerNight: "800",
+            rooms: 3,
+            capacity: 4
+        },
+        {
+            id: 5,
+            title: "Modern Villa in Roses District",
+            type: "villa",
+            image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            location: "Roses District, Riyadh",
+            pricePerNight: "1,800",
+            rooms: 5,
+            capacity: 8
+        },
+        {
+            id: 6,
+            title: "Luxury Chalet with Private Pool",
+            type: "chalet",
+            image: "https://images.unsplash.com/photo-1540518614846-7eded102d7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            location: "Al Souda Mountains, Abha",
+            pricePerNight: "4,000",
+            rooms: 6,
+            capacity: 10
+        }
+    ];
+
+    // متغيرات الحجز
+    let selectedProperty = null;
+    let checkInDate = null;
+    let checkOutDate = null;
+    let nightsCount = 0;
+
+    // دالة لتحميل معلومات العقار
+    function loadPropertyInfo() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = parseInt(urlParams.get('id'));
+        
+        selectedProperty = properties.find(p => p.id === propertyId);
+        const container = document.getElementById('property-summary');
+        
+        if (!selectedProperty) {
+            container.innerHTML = `
+                <div class="error-message" style="text-align: center; padding: 20px;">
+                    <h3>Property Not Found</h3>
+                    <p>Unable to load property information.</p>
+                    <a href="explore.html" style="color: #0077B6; text-decoration: none;">← Back to Properties</a>
+                </div>
+            `;
+            return;
+        }
+        
+        container.innerHTML = `
+            <div class="property-summary-header">
+                <div class="property-summary-image">
+                    <img src="${selectedProperty.image}" alt="${selectedProperty.title}">
+                </div>
+                <div class="property-summary-info">
+                    <h3>${selectedProperty.title}</h3>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${selectedProperty.location}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="property-details-grid">
+                <div class="detail-item">
+                    <i class="fas fa-door-open"></i>
+                    <span>${selectedProperty.rooms} Rooms</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-user-friends"></i>
+                    <span>${selectedProperty.capacity} People</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <span>350 m²</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-tag"></i>
+                    <span>${selectedProperty.pricePerNight} SAR/night</span>
+                </div>
+            </div>
+        `;
+        
+        // تحميل تواريخ الحجز من localStorage
+        loadBookingDates();
+    }
+
+    // دالة لتحميل تواريخ الحجز
+    function loadBookingDates() {
+        const savedDates = JSON.parse(localStorage.getItem('selectedDates')) || {};
+        
+        console.log('Saved dates from localStorage:', savedDates); // للتصحيح
+        
+        if (savedDates.checkIn && savedDates.checkOut) {
+            checkInDate = new Date(savedDates.checkIn);
+            checkOutDate = new Date(savedDates.checkOut);
+            
+            // حساب عدد الليالي
+            const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
+            nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            
+            console.log('Dates loaded:', { checkInDate, checkOutDate, nightsCount }); // للتصحيح
+            
+            // تحديث الواجهة
+            updateBookingSummary();
+        } else {
+            showAlert('Please select check-in and check-out dates first.', 'error');
+            setTimeout(() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const propertyId = urlParams.get('id');
+                window.location.href = `property-details.html?id=${propertyId}`;
+            }, 2000);
+        }
+    }
+
+    // دالة لتحديث ملخص الحجز
+    function updateBookingSummary() {
+        if (!selectedProperty || !checkInDate || !checkOutDate) {
+            console.log('Missing data:', { selectedProperty, checkInDate, checkOutDate }); // للتصحيح
+            return;
+        }
+        
+        const pricePerNight = parseInt(selectedProperty.pricePerNight.replace(',', ''));
+        const basePrice = pricePerNight * nightsCount;
+        const serviceFee = Math.round(basePrice * 0.1); // 10% خدمة
+        const tourismFee = Math.round(basePrice * 0.05); // 5% سياحة
+        const totalAmount = basePrice + serviceFee + tourismFee;
+        
+        console.log('Price calculation:', { pricePerNight, basePrice, serviceFee, tourismFee, totalAmount }); // للتصحيح
+        
+        // تحديث التواريخ
+        document.getElementById('checkin-date').textContent = formatDate(checkInDate);
+        document.getElementById('checkout-date').textContent = formatDate(checkOutDate);
+        document.getElementById('nights-count').textContent = nightsCount;
+        document.getElementById('nights-display').textContent = nightsCount;
+        
+        // تحديث الأسعار
+        document.getElementById('price-per-night').textContent = selectedProperty.pricePerNight + ' SAR';
+        document.getElementById('service-fee').textContent = serviceFee.toLocaleString() + ' SAR';
+        document.getElementById('tourism-fee').textContent = tourismFee.toLocaleString() + ' SAR';
+        document.getElementById('total-amount').textContent = totalAmount.toLocaleString() + ' SAR';
+    }
+
+    // دالة لتهيئة نموذج الحجز
+    function initBookingForm() {
+        const form = document.getElementById('booking-form');
+        const termsCheckbox = document.getElementById('terms-agree');
+        const confirmBtn = document.getElementById('confirm-booking-btn');
+        
+        // التحقق من صحة النموذج
+        form.addEventListener('input', function() {
+            const isValid = form.checkValidity() && termsCheckbox.checked;
+            confirmBtn.disabled = !isValid;
+        });
+        
+        termsCheckbox.addEventListener('change', function() {
+            const isValid = form.checkValidity() && termsCheckbox.checked;
+            confirmBtn.disabled = !isValid;
+        });
+        
+        // تأكيد الحجز
+        confirmBtn.addEventListener('click', function() {
+            if (form.checkValidity() && termsCheckbox.checked) {
+                processBooking();
+            }
+        });
+    }
+
+    // دالة لمعالجة الحجز
+    function processBooking() {
+        const formData = new FormData(document.getElementById('booking-form'));
+        const bookingData = {
+            property: selectedProperty,
+            guest: {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                idNumber: formData.get('idNumber'),
+                specialRequests: formData.get('specialRequests')
+            },
+            dates: {
+                checkIn: checkInDate,
+                checkOut: checkOutDate,
+                nights: nightsCount
+            },
+            payment: calculateTotalAmount(),
+            bookingId: generateBookingId(),
+            bookingDate: new Date().toISOString()
+        };
+        
+        // حفظ بيانات الحجز في localStorage
+        saveBooking(bookingData);
+        
+        // تنظيف التواريخ المختارة بعد الحجز
+        localStorage.removeItem('selectedDates');
+        
+        // عرض رسالة النجاح
+        showAlert('Booking confirmed successfully! Redirecting to confirmation page...', 'success');
+        
+        // توجيه لصفحة التأكيد بعد 2 ثانية
+        setTimeout(() => {
+            window.location.href = `booking-confirmation.html?id=${bookingData.bookingId}`;
+        }, 2000);
+    }
+
+    // دالة لحساب المبلغ الإجمالي
+    function calculateTotalAmount() {
+        const pricePerNight = parseInt(selectedProperty.pricePerNight.replace(',', ''));
+        const basePrice = pricePerNight * nightsCount;
+        const serviceFee = Math.round(basePrice * 0.1);
+        const tourismFee = Math.round(basePrice * 0.05);
+        const totalAmount = basePrice + serviceFee + tourismFee;
+        
+        return {
+            basePrice,
+            serviceFee,
+            tourismFee,
+            totalAmount
+        };
+    }
+
+    // دالة لحفظ الحجز
+    function saveBooking(bookingData) {
+        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        bookings.push(bookingData);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+    }
+
+    // دالة لتوليد رقم حجز فريد
+    function generateBookingId() {
+        return 'BK' + Date.now() + Math.random().toString(36).substr(2, 5).toUpperCase();
+    }
+
+    // دالة لعرض التنبيهات
+    function showAlert(message, type) {
+        const alert = document.getElementById('booking-alert');
+        alert.textContent = message;
+        alert.className = `alert alert-${type}`;
+        alert.style.display = 'block';
+        
+        setTimeout(() => {
+            alert.style.display = 'none';
+        }, 5000);
+    }
+
+    // دالة مساعدة لتنسيق التاريخ
+    function formatDate(date) {
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    }
+
+    function goBackToProperty() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = urlParams.get('id');
+        window.location.href = `property-details.html?id=${propertyId}`;
+    }
+
+    // تهيئة الصفحة عند التحميل
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Booking page loaded'); // للتصحيح
+        loadPropertyInfo();
+        initBookingForm();
+    });
+</script>
+
+</body>
+</html>

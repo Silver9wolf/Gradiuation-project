@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - VeRandA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-footer.css">
+
+    <style>
+        /* تنسيقات صفحة المفضلة */
+        .favorites-header {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #2980b9;
+            transform: translateX(-5px);
+        }
+
+        .no-favorites-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7f8c8d;
+        }
+
+        .no-favorites-message i {
+            font-size: 4rem;
+            color: #bdc3c7;
+            margin-bottom: 20px;
+        }
+
+        .no-favorites-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .no-favorites-message p {
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .explore-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* نفس تنسيقات explore.html */
+        .explore-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .property-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1.2rem;
+            color: #e74c3c;
+        }
+
+        .favorite-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.active {
+            color: #e74c3c;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .property-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .property-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .property-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #555;
+        }
+
+        .detail-item i {
+            color: #3498db;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #f39c12;
+            margin-right: 5px;
+        }
+
+        .rating-count {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .details-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .details-btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!-- النافبار -->
+    <div id="navbar"></div>
+
+    <!-- قسم الهيرو -->
+    <section class="ex">
+        <h1>My Favorite Properties</h1>
+        <p>Your saved properties for easy access</p>
+    </section>
+
+    <!-- محتوى المفضلة -->
+    <div class="explore-container">
+        <div class="favorites-header">
+            <a href="explore.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Explore
+            </a>
+        </div>
+
+        <!-- شبكة العقارات المفضلة -->
+        <div class="properties-grid" id="favorites-container">
+            <!-- العقارات المفضلة سيتم تحميلها هنا -->
+        </div>
+
+        <!-- رسالة عندما لا توجد مفضلات -->
+        <div id="no-favorites" class="no-favorites-message" style="display: none;">
+            <i class="far fa-heart"></i>
+            <h3>No favorites yet</h3>
+            <p>Start adding properties to your favorites by clicking the heart icon</p>
+            <a href="explore.html" class="explore-btn">Explore Properties</a>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <div id="footer"></div>
+
+    <script src="main.js"></script>
+    <script src="navbar.js"></script>
+    <script>
+        // دالة لتحميل وعرض العقارات المفضلة
+        function loadFavorites() {
+            const favoritesContainer = document.getElementById('favorites-container');
+            const noFavoritesMessage = document.getElementById('no-favorites');
+            
+            // جلب العقارات المفضلة من localStorage
+            const favoriteProperties = JSON.parse(localStorage.getItem('favoriteProperties')) || [];
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            
+            console.log('Favorite Properties:', favoriteProperties);
+            console.log('Favorites IDs:', favorites);
+            
+            if (favoriteProperties.length === 0) {
+                // إظهار رسالة لا توجد مفضلات
+                favoritesContainer.style.display = 'none';
+                noFavoritesMessage.style.display = 'block';
+                return;
+            }
+            
+            // إخفاء الرسالة وعرض العقارات
+            noFavoritesMessage.style.display = 'none';
+            favoritesContainer.style.display = 'grid';
+            
+            // عرض العقارات المفضلة
+            renderFavoriteProperties(favoriteProperties);
+        }
+
+        // دالة لعرض العقارات المفضلة بنفس تنسيق explore.html
+        function renderFavoriteProperties(propertiesToRender) {
+            const container = document.getElementById('favorites-container');
+            container.innerHTML = '';
+            
+            console.log('Rendering properties:', propertiesToRender);
+            
+            propertiesToRender.forEach(property => {
+                if (!property || !property.id) {
+                    console.log('Invalid property:', property);
+                    return;
+                }
+                
+                const propertyCard = document.createElement('div');
+                propertyCard.className = `property-card properties-items ${property.type || ''}`;
+                
+                // إنشاء النجوم حسب التقييم
+                const stars = generateStars(property.rating || 0);
+                
+                propertyCard.innerHTML = `
+                    <div class="card-image">
+                        <img src="${property.image || 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&w=600&q=80'}" alt="${property.title || 'Property'}">
+                        <button class="favorite-btn active" data-id="${property.id}">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="property-title">${property.title || 'Unknown Property'}</h3>
+                        <p class="property-description">${property.description || 'No description available'}</p>
+                        
+                        <div class="property-details">
+                            <div class="detail-item">
+                                <i class="fas fa-door-open"></i>
+                                <span>${property.rooms || 0} Rooms</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-user-friends"></i>
+                                <span>${property.capacity || 0} People</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-tag"></i>
+                                <span>${property.price || '0'} SAR</span>
+                            </div>
+                        </div>
+                        
+                        <div class="rating">
+                            <div class="stars">
+                                ${stars}
+                            </div>
+                            <span class="rating-count">(${property.reviews || 0} reviews)</span>
+                        </div>
+                        
+                        <button class="details-btn" data-id="${property.id}">View Details</button>
+                    </div>
+                `;
+                
+                container.appendChild(propertyCard);
+            });
+            
+            // إضافة event listeners لأزرار إزالة من المفضلة
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const propertyId = parseInt(this.getAttribute('data-id'));
+                    removeFromFavorites(propertyId);
+                });
+            });
+            
+            // إضافة event listeners لأزرار التفاصيل
+            document.querySelectorAll('.details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const propertyId = parseInt(this.getAttribute('data-id'));
+                    showPropertyDetails(propertyId);
+                });
+            });
+        }
+
+        // دالة لإزالة من المفضلة
+        function removeFromFavorites(propertyId) {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            let favoriteProperties = JSON.parse(localStorage.getItem('favoriteProperties')) || [];
+            
+            console.log('Removing property ID:', propertyId);
+            
+            // إزالة من المصفوفتين
+            favorites = favorites.filter(id => id !== propertyId);
+            favoriteProperties = favoriteProperties.filter(property => property.id !== propertyId);
+            
+            // حفظ التغييرات
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            localStorage.setItem('favoriteProperties', JSON.stringify(favoriteProperties));
+            
+            console.log('After removal - Favorites:', favorites);
+            console.log('After removal - Favorite Properties:', favoriteProperties);
+            
+            // إعادة تحميل الصفحة
+            loadFavorites();
+        }
+
+        // دالة لتوليد النجوم
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // دالة لعرض تفاصيل العقار
+        function showPropertyDetails(propertyId) {
+            alert(`Property details for ID ${propertyId} will be shown on a separate page`);
+        }
+
+        // تحميل المفضلة عند فتح الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFavorites();
+        });
+
+        // دالة مساعدة لتنظيف البيانات القديمة
+        function cleanupOldData() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const favoriteProperties = JSON.parse(localStorage.getItem('favoriteProperties')) || [];
+            
+            // نحافظ فقط على العقارات الموجودة في favorites
+            const cleanedProperties = favoriteProperties.filter(property => 
+                favorites.includes(property.id)
+            );
+            
+            localStorage.setItem('favoriteProperties', JSON.stringify(cleanedProperties));
+        }
+
+        // ننظف البيانات القديمة عند التحميل
+        cleanupOldData();
+    </script>
+</body>
+</html>

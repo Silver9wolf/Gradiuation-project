@@ -1,0 +1,298 @@
+/* ========== تنسيقات اللغة العربية ========== */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* النافبار */
+[dir="rtl"] .navbar .links,
+[dir="rtl"] .dropdown_menu {
+    text-align: right;
+}
+
+[dir="rtl"] .logo a {
+    text-align: right;
+}
+
+/* السلايدر */
+[dir="rtl"] .slide-content {
+    text-align: center;
+}
+
+[dir="rtl"] .slide-buttons {
+    justify-content: center;
+}
+
+/* قسم about-home */
+[dir="rtl"] .about-text {
+    padding-left: 0;
+    padding-right: 60px;
+    text-align: right;
+}
+
+[dir="rtl"] .about-text h2,
+[dir="rtl"] .about-text p {
+    text-align: right;
+}
+
+/* الأقسام الرئيسية */
+[dir="rtl"] .section-header h2,
+[dir="rtl"] .section-header p {
+    text-align: center;
+}
+
+
+[dir="rtl"] .resort-content {
+    text-align: right;
+}
+
+[dir="rtl"] .resort-content h3 {
+    text-align: right;
+}
+
+/* الموقع والتقييمات */
+[dir="rtl"] .resort-location {
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .resort-features {
+    text-align: right;
+}
+
+[dir="rtl"] .feature {
+    text-align: right;
+}
+
+[dir="rtl"] .resort-rating {
+    text-align: right;
+}
+
+/* LOGIN & REGISTER */
+[dir="rtl"] .input-box .icon {
+    left: 8px;
+    right: auto;
+}
+
+[dir="rtl"] .input-box input {
+    padding: 0 5px 0 35px;
+}
+
+[dir="rtl"] .remember-forgot {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .login-register,
+[dir="rtl"] .register-login {
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+/* CONTACT US */
+[dir="rtl"] .contact-info,
+[dir="rtl"] .contact-form {
+    text-align: right;
+}
+
+[dir="rtl"] .info-item h4,
+[dir="rtl"] .info-item p {
+    text-align: right;
+}
+
+/* ABOUT US */
+[dir="rtl"] .intro-text {
+    padding-left: 0;
+    padding-right: 60px;
+    text-align: right;
+}
+
+/* إصلاح تنسيق cards في سكشن value فقط */
+[dir="rtl"] .value .cards::before {
+    left: auto;
+    right: -5px;
+}
+
+[dir="rtl"] .value .cards:hover::before {
+    transform: rotate(90deg) scaleX(1.34) scaleY(0.77);
+}
+
+[dir="rtl"] .counter-box {
+    text-align: center;
+}
+
+[dir="rtl"] .final {
+    text-align: center;
+}
+
+[dir="rtl"] .hv {
+    text-align: center;
+}
+
+[dir="rtl"] .cards {
+    text-align: center;
+}
+
+[dir="rtl"] .heading {
+    text-align: center;
+}
+
+/* EXPLORE */
+[dir="rtl"] .search-input {
+    margin-left: 0;
+    margin-right: 20px;
+    text-align: right;
+}
+
+[dir="rtl"] .search-input::placeholder {
+    text-align: right;
+}
+
+[dir="rtl"] .property-title,
+[dir="rtl"] .property-description {
+    text-align: right;
+}
+
+[dir="rtl"] .property-details {
+    text-align: right;
+}
+
+[dir="rtl"] .detail-item {
+    text-align: right;
+}
+
+[dir="rtl"] .rating {
+    text-align: right;
+}
+
+/* PROPERTY DETAILS */
+[dir="rtl"] .property-main-info h1 {
+    text-align: right;
+}
+
+[dir="rtl"] .property-location {
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .property-price-large {
+    text-align: center;
+}
+
+[dir="rtl"] .property-features {
+    text-align: right;
+}
+
+[dir="rtl"] .feature-item {
+    text-align: right;
+}
+
+[dir="rtl"] .description-text {
+    text-align: right;
+    border-left: none;
+    border-right: 4px solid #3498db;
+}
+
+[dir="rtl"] .amenity-item {
+    text-align: right;
+}
+
+[dir="rtl"] .rating-overview {
+    text-align: right;
+}
+
+[dir="rtl"] .average-rating {
+    text-align: center;
+}
+
+[dir="rtl"] .location-info h3,
+[dir="rtl"] .location-address {
+    text-align: right;
+}
+
+/* BOOKING */
+[dir="rtl"] .booking-header {
+    text-align: center;
+}
+
+[dir="rtl"] .property-summary-info h3 {
+    text-align: right;
+}
+
+[dir="rtl"] .property-summary-info .location {
+    justify-content: flex-end;
+}
+
+[dir="rtl"] .property-details-grid {
+    text-align: right;
+}
+
+[dir="rtl"] .form-section-title {
+    text-align: right;
+}
+
+[dir="rtl"] .form-group label {
+    text-align: right;
+}
+
+[dir="rtl"] .form-group input,
+[dir="rtl"] .form-group textarea {
+    text-align: right;
+}
+
+[dir="rtl"] .booking-dates {
+    text-align: right;
+}
+
+[dir="rtl"] .date-item {
+    text-align: right;
+}
+
+[dir="rtl"] .price-breakdown {
+    text-align: right;
+}
+
+[dir="rtl"] .price-item {
+    text-align: right;
+}
+
+[dir="rtl"] .checkbox-group label {
+    text-align: right;
+}
+
+/* التجاوب للعربية */
+@media (max-width: 900px) {
+    [dir="rtl"] .about-text {
+        padding-right: 20px;
+        text-align: center;
+    }
+    
+    [dir="rtl"] .about-text h2,
+    [dir="rtl"] .about-text p {
+        text-align: center;
+    }
+    
+    [dir="rtl"] .intro-text {
+        padding-right: 20px;
+        text-align: center;
+    }
+    
+    [dir="rtl"] .intro-text h2,
+    [dir="rtl"] .intro-text p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .type-content,
+    [dir="rtl"] .resort-content,
+    [dir="rtl"] .step-card {
+        text-align: center;
+    }
+    
+    [dir="rtl"] .type-content h3,
+    [dir="rtl"] .type-content p,
+    [dir="rtl"] .resort-content h3,
+    [dir="rtl"] .step-card h3,
+    [dir="rtl"] .step-card p {
+        text-align: center;
+    }
+}

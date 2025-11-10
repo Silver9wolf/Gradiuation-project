@@ -65,7 +65,7 @@
 
                         <div class="form-group">
                             <label for="specialRequests">ملاحظة</label>
-                            <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requirements or requests..."></textarea>
+                            <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="..."></textarea>
                         </div>
                     </form>
                 </div>
@@ -74,43 +74,39 @@
             <!-- ملخص الحجز -->
             <div class="booking-right">
                 <div class="booking-summary-section">
-                    <h2 class="form-section-title">Booking Summary</h2>
+                    <h2 class="form-section-title">ملخص الحجز</h2>
                     
                     <div class="booking-dates">
                         <div class="date-item">
-                            <span>Check-in:</span>
+                            <span>تاريخ الوصول:</span>
                             <strong id="checkin-date">--/--/----</strong>
                         </div>
                         <div class="date-item">
-                            <span>Check-out:</span>
+                            <span>تاريخ الخروج:</span>
                             <strong id="checkout-date">--/--/----</strong>
                         </div>
                         <div class="date-item">
-                            <span>Nights:</span>
+                            <span>عدد الأيام:</span>
                             <strong id="nights-count">0</strong>
                         </div>
                     </div>
 
                     <div class="price-breakdown">
                         <div class="price-item">
-                            <span>Price per night</span>
-                            <span id="price-per-night">0 SAR</span>
+                            <span>سعر اليوم</span>
+                            <span id="price-per-night">0 د.ل</span>
                         </div>
                         <div class="price-item">
-                            <span>Number of nights</span>
+                            <span>عدد الأيام</span>
                             <span id="nights-display">0</span>
                         </div>
                         <div class="price-item">
-                            <span>Service fee</span>
-                            <span id="service-fee">0 SAR</span>
-                        </div>
-                        <div class="price-item">
-                            <span>Tourism fee</span>
-                            <span id="tourism-fee">0 SAR</span>
+                            <span>رسوم الخدمة</span>
+                            <span id="service-fee">0 د.ل</span>
                         </div>
                         <div class="price-item total">
-                            <span>Total Amount</span>
-                            <span id="total-amount">0 SAR</span>
+                            <span>المبلغ الإجمالي</span>
+                            <span id="total-amount">0 د.ل</span>
                         </div>
                     </div>
 
@@ -118,20 +114,16 @@
                         <div class="checkbox-group">
                             <input type="checkbox" id="terms-agree" required>
                             <label for="terms-agree">
-                                I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and 
-                                <a href="#" class="terms-link">Cancellation Policy</a> *
+                                أوافق على <a href="#" class="terms-link">الشروط والأحكام</a> و
+                                <a href="#" class="terms-link">سياسة الإلغاء</a> *
                             </label>
                         </div>
                     </div>
 
                     <button class="book-now-btn" id="confirm-booking-btn" disabled>
                         <i class="fas fa-lock"></i>
-                        Confirm Booking
+                        تأكيد الحجز
                     </button>
-
-                    <p style="text-align: center; margin-top: 15px; color: #7f8c8d; font-size: 0.9rem;">
-                        Secure payment • Free cancellation within 24 hours
-                    </p>
                 </div>
             </div>
         </div>
@@ -182,7 +174,7 @@
             title: "استراحة سيري-طرابلس",
             type: "resthouse",
             image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "اطلالة بحرية",
+            location: "طرابلس",
             pricePerNight: "800",
             rooms: 3,
             capacity: 4
@@ -250,19 +242,15 @@
             <div class="property-details-grid">
                 <div class="detail-item">
                     <i class="fas fa-door-open"></i>
-                    <span>${selectedProperty.rooms} Rooms</span>
+                    <span>${selectedProperty.rooms} غرف</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-user-friends"></i>
-                    <span>${selectedProperty.capacity} People</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fas fa-ruler-combined"></i>
-                    <span>350 m²</span>
+                    <span>${selectedProperty.capacity} شخص</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-tag"></i>
-                    <span>${selectedProperty.pricePerNight} SAR/night</span>
+                    <span>${selectedProperty.pricePerNight} د.ل/الليلة</span>
                 </div>
             </div>
         `;
@@ -308,11 +296,10 @@
         
         const pricePerNight = parseInt(selectedProperty.pricePerNight.replace(',', ''));
         const basePrice = pricePerNight * nightsCount;
-        const serviceFee = Math.round(basePrice * 0.1); // 10% خدمة
-        const tourismFee = Math.round(basePrice * 0.05); // 5% سياحة
-        const totalAmount = basePrice + serviceFee + tourismFee;
+        const serviceFee = Math.round(basePrice * 0); // 10% خدمة
+        const totalAmount = basePrice + serviceFee ;
         
-        console.log('Price calculation:', { pricePerNight, basePrice, serviceFee, tourismFee, totalAmount }); // للتصحيح
+        console.log('Price calculation:', { pricePerNight, basePrice, serviceFee, totalAmount }); // للتصحيح
         
         // تحديث التواريخ
         document.getElementById('checkin-date').textContent = formatDate(checkInDate);
@@ -321,10 +308,9 @@
         document.getElementById('nights-display').textContent = nightsCount;
         
         // تحديث الأسعار
-        document.getElementById('price-per-night').textContent = selectedProperty.pricePerNight + ' SAR';
-        document.getElementById('service-fee').textContent = serviceFee.toLocaleString() + ' SAR';
-        document.getElementById('tourism-fee').textContent = tourismFee.toLocaleString() + ' SAR';
-        document.getElementById('total-amount').textContent = totalAmount.toLocaleString() + ' SAR';
+        document.getElementById('price-per-night').textContent = selectedProperty.pricePerNight + ' د.ل';
+        document.getElementById('service-fee').textContent = serviceFee.toLocaleString() + ' د.ل';
+        document.getElementById('total-amount').textContent = totalAmount.toLocaleString() + ' د.ل';
     }
 
     // دالة لتهيئة نموذج الحجز
@@ -394,14 +380,12 @@
     function calculateTotalAmount() {
         const pricePerNight = parseInt(selectedProperty.pricePerNight.replace(',', ''));
         const basePrice = pricePerNight * nightsCount;
-        const serviceFee = Math.round(basePrice * 0.1);
-        const tourismFee = Math.round(basePrice * 0.05);
-        const totalAmount = basePrice + serviceFee + tourismFee;
+        const serviceFee = Math.round(basePrice * 0);
+        const totalAmount = basePrice + serviceFee ;
         
         return {
             basePrice,
             serviceFee,
-            tourismFee,
             totalAmount
         };
     }

@@ -107,7 +107,7 @@
 }
 
 /* إصلاح تنسيق cards في سكشن value فقط */
-/*[dir="rtl"] .value .cards::before {
+[dir="rtl"] .value .cards::before {
     left: auto;
     right: -5px;
 }

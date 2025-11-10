@@ -410,14 +410,14 @@ input:focus, textarea:focus {
       font-size: 40px;
       color: #023E8A;
       margin-bottom: 20px;
-      padding-left: 60px;
+      padding-right: 60px;
     }
 
     .intro-text p {
       line-height: 1.8;
       font-size: 17px;
       color: #242424;
-      padding-left: 60px;
+      padding-right: 60px;
     }
 
     .intro img {

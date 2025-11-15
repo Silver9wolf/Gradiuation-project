@@ -107,7 +107,7 @@
 }
 
 /* إصلاح تنسيق cards في سكشن value فقط */
-[dir="rtl"] .value .cards::before {
+/*[dir="rtl"] .value .cards::before {
     left: auto;
     right: -5px;
 }
@@ -137,39 +137,7 @@
 }
 
 
-/* إصلاح قسم intro للعربية */
-[dir="rtl"] .intro-text {
-    padding-left: 0;
-    padding-right: 0;
-    text-align: right;
-}
 
-[dir="rtl"] .intro-text h2 {
-    padding-right: 0;
-    padding-left: 60px;
-    text-align: right;
-}
-
-[dir="rtl"] .intro-text p {
-    padding-right: 0;
-    padding-left: 60px;
-    text-align: right;
-}
-
-/* إصلاح قسم about-home للعربية */
-[dir="rtl"] .about-text {
-    padding-left: 0;
-    padding-right: 60px;
-    text-align: right;
-}
-
-[dir="rtl"] .about-text h2 {
-    text-align: right;
-}
-
-[dir="rtl"] .about-text p {
-    text-align: right;
-}
 
 /* EXPLORE */
 [dir="rtl"] .search-input {

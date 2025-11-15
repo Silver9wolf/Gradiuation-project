@@ -1127,7 +1127,7 @@ input:focus, textarea:focus {
 
 .btn-primary {
     padding: 15px 35px;
-    background: linear-gradient(to right, #023E8A, #0077B6);
+    background: #023E8A;
     color: white;
     text-decoration: none;
     border-radius: 30px;
@@ -1141,7 +1141,7 @@ input:focus, textarea:focus {
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 119, 182, 0.4);
-    background: linear-gradient(to right, #0077B6, #00B4D8);
+    background: #00B4D8;
 }
 
 .btn-secondary {

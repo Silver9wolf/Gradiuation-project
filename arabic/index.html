@@ -61,10 +61,10 @@
         
         <!-- أزرار التحكم -->
         <button class="slider-btn prev-btn">
-            <i class="fas fa-chevron-right"></i> <!-- عكس السهم -->
+            <i class="fas fa-chevron-left"></i>
         </button>
         <button class="slider-btn next-btn">
-            <i class="fas fa-chevron-left"></i> <!-- عكس السهم -->
+            <i class="fas fa-chevron-right"></i>
         </button>
         
         <!-- النقاط للإشارة -->
@@ -161,13 +161,13 @@
             <div class="resort-card">
                 <div class="resort-image">
                     <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="استراحة فاخرة">
-                    <div class="resort-price">1,200 ريال/ليلة</div>
+                    <div class="resort-price">1000 د.ل/ليلة</div>
                 </div>
                 <div class="resort-content">
-                    <h3>استراحة فاخرة في الرياض</h3>
+                    <h3>استراحة المرجان</h3>
                     <div class="resort-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>حي العليا، الرياض</span>
+                        <span>طرابلس</span>
                     </div>
                     <div class="resort-features">
                         <div class="feature">
@@ -177,10 +177,6 @@
                         <div class="feature">
                             <i class="fas fa-user-friends"></i>
                             <span>6 أشخاص</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-ruler-combined"></i>
-                            <span>350 م²</span>
                         </div>
                     </div>
                     <div class="resort-rating">
@@ -193,7 +189,7 @@
                         </div>
                         <span class="rating-count">(128 تقييم)</span>
                     </div>
-                    <a href="property-details-ar.html?id=1" class="resort-btn">احجز الآن</a>
+                    <a href="property-details.html?id=1" class="resort-btn">احجز الآن</a>
                 </div>
             </div>
             
@@ -201,13 +197,13 @@
             <div class="resort-card">
                 <div class="resort-image">
                     <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فيلا متميزة">
-                    <div class="resort-price">2,500 ريال/ليلة</div>
+                    <div class="resort-price">1500 د.ل/ليلة</div>
                 </div>
                 <div class="resort-content">
-                    <h3>فيلا متميزة في حي النخيل</h3>
+                    <h3>عقار العائلة</h3>
                     <div class="resort-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>حي النخيل، جدة</span>
+                        <span>الخمس</span>
                     </div>
                     <div class="resort-features">
                         <div class="feature">
@@ -218,10 +214,7 @@
                             <i class="fas fa-user-friends"></i>
                             <span>10 أشخاص</span>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-ruler-combined"></i>
-                            <span>550 م²</span>
-                        </div>
+                        
                     </div>
                     <div class="resort-rating">
                         <div class="stars">
@@ -233,7 +226,7 @@
                         </div>
                         <span class="rating-count">(76 تقييم)</span>
                     </div>
-                    <a href="property-details-ar.html?id=2" class="resort-btn">احجز الآن</a>
+                    <a href="property-details.html?id=2" class="resort-btn">احجز الآن</a>
                 </div>
             </div>
             
@@ -241,13 +234,13 @@
             <div class="resort-card">
                 <div class="resort-image">
                     <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="شاليه بإطلالة">
-                    <div class="resort-price">3,200 ريال/ليلة</div>
+                    <div class="resort-price">2000 د.ل/ليلة</div>
                 </div>
                 <div class="resort-content">
-                    <h3>شاليه بإطلالة بانورامية</h3>
+                    <h3>قرية سيرين</h3>
                     <div class="resort-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>الإطلالة الجبلية، أبها</span>
+                        <span>القويعه</span>
                     </div>
                     <div class="resort-features">
                         <div class="feature">
@@ -258,10 +251,7 @@
                             <i class="fas fa-user-friends"></i>
                             <span>8 أشخاص</span>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-ruler-combined"></i>
-                            <span>400 م²</span>
-                        </div>
+                        
                     </div>
                     <div class="resort-rating">
                         <div class="stars">
@@ -273,7 +263,7 @@
                         </div>
                         <span class="rating-count">(54 تقييم)</span>
                     </div>
-                    <a href="property-details-ar.html?id=3" class="resort-btn">احجز الآن</a>
+                    <a href="property-details.html?id=3" class="resort-btn">احجز الآن</a>
                 </div>
             </div>
         </div>
@@ -328,7 +318,9 @@
     <!-- السكريبتات -->
     <script src="main.js"></script>
     <script src="navbar.js"></script>
-    <script src="js/language-switcher.js"></script>
+    <button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
     <script>
         // السلايدر
         class HeroSlider {

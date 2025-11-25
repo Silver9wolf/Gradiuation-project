@@ -416,19 +416,4 @@ list-style: none;
   font-weight: 500;
 }
 
-#backToTop {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  background-color: #48CAE4;
-  border: none;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
 
-#backToTop:hover {
-  background-color: #48cae4a6;
-}

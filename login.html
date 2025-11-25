@@ -91,5 +91,49 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 });
 </script>
 
+<script type="module">
+    import { AuthAPI } from './api.js';
+
+    // دالة تسجيل الدخول الجديدة
+    async function loginWithAPI() {
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        if (!email || !password) {
+            alert('Please fill all fields');
+            return;
+        }
+
+        const result = await AuthAPI.login({ 
+            email: email, 
+            password: password 
+        });
+        
+        if (result.success) {
+            // نجاح - نحفظ بيانات المستخدم
+            localStorage.setItem("username", result.data.user?.username || "User");
+            localStorage.setItem("token", result.data.access_token);
+            localStorage.setItem("user", JSON.stringify(result.data.user));
+            
+            alert(result.data.message || 'Login successful');
+            window.location.href = "index.html"; // أو index-ar.html للعربية
+        } else {
+            // فشل - نعرض رسالة الخطأ
+            alert(result.data.detail || 'Login failed');
+        }
+    }
+
+    // نربط الدالة الجديدة مع الزر الحالي
+    document.querySelector('.btn-form').addEventListener('click', loginWithAPI);
+    
+    // دعم الزر Enter
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginWithAPI();
+            }
+        });
+    });
+</script>
 </body>
 </html>

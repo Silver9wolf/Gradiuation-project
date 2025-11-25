@@ -60,6 +60,9 @@
     <!-- السكريبتات -->
     <script src="main.js"></script>
     <script src="navbar.js"></script>
+    <button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
     <script>
         // بيانات العقارات
         const properties = [
@@ -361,10 +364,50 @@
         // ننظف البيانات القديمة عند التحميل
         cleanupOldData();
 
-
-
-
-        
     </script>
+
+
+<!-- في نهاية الملف قبل </body> -->
+<script type="module">
+    import { PropertyAPI } from './api.js';
+
+    // دالة جديدة لجلب العقارات من API
+    async function loadPropertiesFromAPI() {
+        const result = await PropertyAPI.getAll();
+        if (result.success && result.data) {
+            return result.data.map(place => ({
+                id: place.id,
+                title: place.name,
+                description: place.description || 'لا يوجد وصف',
+                location: place.location || 'موقع غير معروف',
+                pricePerNight: place.price ? place.price.toString() : '0',
+                rooms: place.number_of_rooms || 1,
+                capacity: place.room_capacity || 1,
+                type: place.type || 'منتجع',
+                image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                rating: 4.5,
+                reviews: Math.floor(Math.random() * 100) + 10
+            }));
+        }
+        return [];
+    }
+
+    // دالة التحميل الرئيسية
+    async function loadProperties() {
+        // نجرب API أولاً
+        let propertiesFromAPI = await loadPropertiesFromAPI();
+        
+        if (propertiesFromAPI.length > 0) {
+            // استخدم بيانات API
+            renderProperties(propertiesFromAPI);
+        } else {
+            // استخدم البيانات الثابتة
+            renderProperties(properties);
+        }
+    }
+
+    // نستبدل الاستدعاء القديم
+    document.addEventListener('DOMContentLoaded', loadProperties);
+</script>
 </body>
 </html>

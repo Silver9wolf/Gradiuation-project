@@ -21,7 +21,9 @@
 
     <!-- الفوتر -->
     <div id="footer"></div>
-
+<button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
     <script src="main.js"></script>
     <script src="navbar.js"></script>
     <script src="property-details.js"></script>
@@ -748,5 +750,69 @@ function bookProperty(propertyId) {
 // تحميل التفاصيل عند فتح الصفحة
 document.addEventListener('DOMContentLoaded', loadPropertyDetails);
     </script>
+
+    <script type="module">
+    import { PropertyAPI, CalendarAPI } from './api.js';
+
+    async function loadPropertyFromAPI(propertyId) {
+        const result = await PropertyAPI.getById(propertyId);
+        if (result.success && result.data) {
+            return {
+                id: result.data.id,
+                title: result.data.name,
+                description: result.data.description,
+                location: result.data.location,
+                pricePerNight: result.data.price.toString(),
+                rooms: result.data.number_of_rooms,
+                capacity: result.data.room_capacity,
+                type: result.data.type,
+                images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'],
+                amenities: ["واي فاي", "موقف سيارات", "تكييف"],
+                rating: 4.5,
+                reviews: 10
+            };
+        }
+        return null;
+    }
+
+    async function loadBookedDatesFromAPI(propertyId) {
+        const result = await CalendarAPI.getBookedDates(propertyId);
+        if (result.success) {
+            const bookedDates = [];
+            result.data.booked_periods.forEach(period => {
+                const start = new Date(period.check_in);
+                const end = new Date(period.check_out);
+                for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+                    bookedDates.push(d.toISOString().split('T')[0]);
+                }
+            });
+            return bookedDates;
+        }
+        return [];
+    }
+
+    async function loadPropertyDetails() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = parseInt(urlParams.get('id'));
+        
+        let property = await loadPropertyFromAPI(propertyId);
+        let bookedDates = await loadBookedDatesFromAPI(propertyId);
+        
+        if (!property) {
+            property = properties.find(p => p.id === propertyId);
+            if (property) {
+                bookedDates = property.bookedDates || [];
+            } else {
+                alert('العقار غير موجود');
+                return;
+            }
+        }
+        
+        // استمرار الكود الحالي...
+        renderPropertyDetails(property, bookedDates);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPropertyDetails);
+</script>
 </body>
 </html>

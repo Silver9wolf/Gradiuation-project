@@ -17,7 +17,7 @@
  <div id="navbar"></div>
   <div class="contact-header">
         <h2>تواصل معنا</h2>
-        <p>Are you a resort or vacation home owner? Partner with us to feature your property on our platform! Fill out the form below and our team will contact you to get started.</p>
+        <p>هل أنت مالك منتجع أو استراحة؟ انضم إلينا لعرض عقارك على منصتنا! املأ النموذج أدناه وسيتواصل معك فريقنا للبدء.</p>
       </div>
 
   <section class="contact-section">
@@ -86,6 +86,50 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 <div id="footer"></div>
 <script src="main.js"></script>
 <script src="navbar.js"></script> 
+<button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- في نهاية الملف قبل </body> -->
+<script type="module">
+    import { ContactAPI } from './api.js';
+
+    // دالة إرسال رسالة التواصل
+    async function submitContactForm(event) {
+        event.preventDefault();
+        
+        const formData = new FormData(event.target);
+        const contactData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message')
+        };
+
+        // التحقق من البيانات
+        if (!contactData.name || !contactData.email || !contactData.message) {
+            alert('يرجى ملء الحقول المطلوبة');
+            return;
+        }
+
+        const result = await ContactAPI.submit(contactData);
+        
+        if (result.success) {
+            alert('تم إرسال رسالتك بنجاح، سنتواصل معك قريباً');
+            event.target.reset();
+        } else {
+            alert(result.data.detail || 'فشل إرسال الرسالة');
+        }
+    }
+
+    // ربط النموذج
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', submitContactForm);
+        }
+    });
+</script>
 
 </body>
 </html>

@@ -58,6 +58,9 @@
     <!-- السكريبتات -->
     <script src="main.js"></script>
     <script src="navbar.js"></script>
+    <button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
     <script>
         // بيانات العقارات
         const properties = [
@@ -75,7 +78,7 @@
             },
             {
                 id: 2,
-                title: "Family estste-Alkhoums",
+                title: "Family estate-Alkhoums",
                 type: "villa",
                 image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
                 description: "Luxury villa with private garden and pool, elegant design and spacious areas",
@@ -359,10 +362,50 @@
         // ننظف البيانات القديمة عند التحميل
         cleanupOldData();
 
-
-
-
-        
     </script>
+
+
+<script type="module">
+    import { PropertyAPI } from './api.js';
+
+    // دالة جديدة لجلب العقارات من API
+    async function loadPropertiesFromAPI() {
+        const result = await PropertyAPI.getAll();
+        if (result.success && result.data) {
+            // تحويل البيانات من API إلى الصيغة المطلوبة
+            return result.data.map(place => ({
+                id: place.id,
+                title: place.name,
+                description: place.description,
+                location: place.location,
+                pricePerNight: place.price.toString(),
+                rooms: place.number_of_rooms,
+                capacity: place.room_capacity,
+                type: place.type,
+                image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', // افتراضية
+                rating: 4.5, // افتراضي
+                reviews: 10 // افتراضي
+            }));
+        }
+        return [];
+    }
+
+    // نعدل دالة التحميل
+    async function loadProperties() {
+        // نجرب API أولاً
+        let propertiesFromAPI = await loadPropertiesFromAPI();
+        
+        if (propertiesFromAPI.length > 0) {
+            // استخدم بيانات API
+            renderProperties(propertiesFromAPI);
+        } else {
+            // استخدم البيانات الثابتة
+            renderProperties(properties);
+        }
+    }
+
+    // نستبدل الاستدعاء القديم
+    document.addEventListener('DOMContentLoaded', loadProperties);
+</script>
 </body>
 </html>

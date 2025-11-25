@@ -128,7 +128,9 @@
 
     <!-- الفوتر -->
     <div id="footer"></div>
-
+<button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
     <script src="main.js"></script>
     <script src="navbar.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -436,6 +438,103 @@
         initBookingForm();
     });
 </script>
+// في booking.html - نضيف
+<script type="module">
+    import { PropertyAPI } from './api.js';
 
+    // دالة جديدة للحجز عبر API
+    async function createBookingAPI(bookingData) {
+        const result = await PropertyAPI.createBooking(selectedProperty.id, bookingData);
+        return result;
+    }
+
+    // نعدل دالة processBooking الحالية
+    async function processBooking() {
+        const formData = new FormData(document.getElementById('booking-form'));
+        
+        const bookingData = {
+            full_name: formData.get('firstName'),
+            email: formData.get('email'),
+            phone_number: formData.get('phone'),
+            check_in: checkInDate.toISOString().split('T')[0],
+            check_out: checkOutDate.toISOString().split('T')[0],
+            notes: formData.get('specialRequests')
+        };
+
+        // نجرب نحجز عبر API
+        const result = await createBookingAPI(bookingData);
+        
+        if (result.success) {
+            // نجاح - ننظف البيانات ونوجه
+            localStorage.removeItem('selectedDates');
+            showAlert('Booking confirmed successfully!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = `booking-confirmation.html?id=${result.data.id}`;
+            }, 2000);
+        } else {
+            // فشل - نعرض رسالة الخطأ
+            showAlert(result.data.detail || 'Booking failed', 'error');
+        }
+    }
+</script>
+
+
+<script type="module">
+    import { PropertyAPI } from './api.js';
+
+    // دالة جديدة للحجز عبر API
+    async function createBookingAPI(bookingData) {
+        const result = await PropertyAPI.createBooking(selectedProperty.id, bookingData);
+        return result;
+    }
+
+    // نعدل دالة processBooking الحالية
+    async function processBooking() {
+        const formData = new FormData(document.getElementById('booking-form'));
+        
+        const bookingData = {
+            full_name: formData.get('firstName'),
+            email: formData.get('email'),
+            phone_number: formData.get('phone'),
+            check_in: checkInDate.toISOString().split('T')[0],
+            check_out: checkOutDate.toISOString().split('T')[0],
+            notes: formData.get('specialRequests') || ''
+        };
+
+        // التحقق من البيانات
+        if (!bookingData.full_name || !bookingData.email || !bookingData.phone_number) {
+            showAlert('Please fill all required fields', 'error');
+            return;
+        }
+
+        // نجرب نحجز عبر API
+        const result = await createBookingAPI(bookingData);
+        
+        if (result.success) {
+            // نجاح - ننظف البيانات ونوجه
+            localStorage.removeItem('selectedDates');
+            showAlert('Booking confirmed successfully!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = `booking-confirmation.html?id=${result.data.id}`;
+            }, 2000);
+        } else {
+            // فشل - نعرض رسالة الخطأ
+            showAlert(result.data.detail || 'Booking failed', 'error');
+        }
+    }
+
+    // نستبدل الدالة القديمة
+    // نغير السطر هذا في الكود الحالي:
+    // confirmBtn.addEventListener('click', function() {
+    // إلى:
+    confirmBtn.addEventListener('click', async function() {
+        if (document.getElementById('booking-form').checkValidity() && 
+            document.getElementById('terms-agree').checked) {
+            await processBooking();
+        }
+    });
+</script>
 </body>
 </html>

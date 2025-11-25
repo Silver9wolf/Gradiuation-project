@@ -85,6 +85,50 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 <div id="footer"></div>
 <script src="main.js"></script>
 <script src="navbar.js"></script> 
+<button id="backToTopBtn" title="الرجوع للأعلى">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- في نهاية الملف قبل </body> -->
+<script type="module">
+    import { ContactAPI } from './api.js';
+
+    // دالة إرسال رسالة التواصل
+    async function submitContactForm(event) {
+        event.preventDefault();
+        
+        const formData = new FormData(event.target);
+        const contactData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message')
+        };
+
+        // التحقق من البيانات
+        if (!contactData.name || !contactData.email || !contactData.message) {
+            alert('Please fill all required fields');
+            return;
+        }
+
+        const result = await ContactAPI.submit(contactData);
+        
+        if (result.success) {
+            alert('Your message has been sent successfully, we will contact you soon');
+            event.target.reset();
+        } else {
+            alert(result.data.detail || 'Failed to send message');
+        }
+    }
+
+    // ربط النموذج
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', submitContactForm);
+        }
+    });
+</script>
 
 </body>
 </html>

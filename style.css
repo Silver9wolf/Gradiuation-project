@@ -1368,6 +1368,315 @@ input:focus, textarea:focus {
     }
 }
 
+        
+        /* Property Types Section */
+        .property-types {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .type-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .type-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .type-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .type-card:hover .type-image img {
+            transform: scale(1.1);
+        }
+        
+        .type-content {
+            padding: 25px 20px;
+        }
+        
+        .type-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .type-content h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .type-content p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .type-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(to right, #023E8A, #0077B6);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .type-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(2, 62, 138, 0.3);
+        }
+        
+        /* Featured Resorts Section */
+        .featured-resorts {
+            padding: 80px 20px;
+        }
+        
+        .resorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .resort-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .resort-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .resort-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .resort-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .resort-card:hover .resort-image img {
+            transform: scale(1.05);
+        }
+        
+        .resort-price {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(2, 62, 138, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .resort-content {
+            padding: 25px;
+        }
+        
+        .resort-content h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .resort-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .resort-location i {
+            color: #e74c3c;
+        }
+        
+        .resort-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .feature i {
+            color: #3498db;
+        }
+        
+        .resort-rating {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .stars {
+            color: #f39c12;
+        }
+        
+        .rating-count {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .resort-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #023E8A, #0077B6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .resort-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(2, 62, 138, 0.3);
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, #023E8A, #0077B6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .step-card h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .step-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .types-grid,
+            .resorts-grid,
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .resort-features {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
 
 /*! =========================================== PROPERTY DETAILS ===========================================*/
 
@@ -2133,3 +2442,57 @@ input:focus, textarea:focus {
                 grid-template-columns: 1fr;
             }
         }
+
+
+        /* زر الرجوع للأعلى  */
+#backToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #023E8A, #0077B6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(2, 62, 138, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+#backToTopBtn:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #0077B6, #00B4D8);
+    opacity: 1;
+}
+
+#backToTopBtn:active {
+    transform: translateY(-2px);
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    #backToTopBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    #backToTopBtn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}

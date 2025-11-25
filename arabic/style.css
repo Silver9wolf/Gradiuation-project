@@ -621,30 +621,7 @@ margin: 0 0 20px 0;
 
 
 
-/* تأكد من هذه الإعدادات الأساسية */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    overflow-x: hidden;
-}
-
-/* تحسين الصورة في intro */
-.intro img {
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-/* منع التمرير الأفقي */
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
 
 /*! =========================================== EXPLORE ===========================================*/
 

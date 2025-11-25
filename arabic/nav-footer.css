@@ -127,12 +127,15 @@ list-style: none;
     right: 2rem;
     top: 60px;
     width: 300px;
-    background: rgb(255, 255, 255, 0.1);
+    background: rgb(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(15px);
     border-radius: 10px;
     overflow: hidden;
     height: 0;
     transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgb(247, 247, 247) !important;
+    z-index: 9999 !important; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
 
 }
 .dropdown_menu a {
@@ -144,6 +147,7 @@ list-style: none;
     margin: 2px 14px;
     font-size: 20px;
     transition-duration: 1s;
+
 }
 .dropdown_menu a:hover {
   color: #ffffff;

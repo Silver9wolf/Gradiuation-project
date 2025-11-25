@@ -133,6 +133,10 @@ list-style: none;
     overflow: hidden;
     height: 0;
     transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgb(247, 247, 247) !important;
+    z-index: 9999 !important; 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+
 
 }
 .dropdown_menu a {

@@ -28,7 +28,7 @@ function highlightCurrentPage() {
             link.classList.remove("active");
         }
         if (currentPage === "" || currentPage === "index.html") {
-    document.querySelector('a[href="index.html"]').classList.add("active");
+  document.querySelector('a[href="index.html"]').classList.add("active");
 }
 
     });

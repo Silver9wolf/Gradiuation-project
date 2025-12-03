@@ -1,4 +1,4 @@
-// api.js - ننشئ هذا الملف جديد
+// arabic-pages/api.js
 const API_BASE_URL = 'https://kamela-backend-1.onrender.com';
 
 class API {
@@ -12,7 +12,6 @@ class API {
                 ...options
             });
             
-            // إذا الرد مش JSON (مثل 204 No Content)
             if (response.status === 204) {
                 return { success: true, data: null, status: response.status };
             }

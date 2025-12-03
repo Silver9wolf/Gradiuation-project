@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="nav-footer.css">
+
+</head>
+<body class="login">
+<div class="wrapper">
+    <div class="form-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+
+            <button type="button" class="btn-form" onclick="loginUser()">Login</button>
+
+            <div class="login-register">
+                <p>Don't have an account? <a href="register.html" class="register-link">Register</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+function loginUser() {
+    const email = document.querySelector('input[name="email"]').value;
+    const password = document.querySelector('input[name="password"]').value;
+
+    if(email && password) {
+        // إذا كان اسم المستخدم مخزن مسبقاً من صفحة التسجيل
+        const storedUsername = localStorage.getItem("username") || "User";
+        localStorage.setItem("username", storedUsername); // نخزن أو نثبت الاسم
+        window.location.href = "index.html"; // نرجع للصفحة الرئيسية
+    } else {
+        alert("Please fill both fields.");
+    }
+}
+</script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<!-- كود الربط بـ FastAPI -->
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = {
+        email: formData.get("email"), //عدلت كلمة email
+        password: formData.get("password")
+    };
+     console.log("البيانات المرسلة", data); //<3 <3 اني ضفت السطر هادا 
+    try {
+       const response = await fetch("https://kamela-backend-1.onrender.com/login", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+});
+        const result = await response.json();
+      if (result.message === "Login successful") {
+    alert(result.message); // رسالة نجاح
+    console.log("رد السيرفر ", result);
+    window.location.href = "index.html"; // تحويل للصفحة الرئيسية
+} else {
+    alert(result.detail || "خطأ في تسجيل الدخول");
+    console.log("رد السيرفر (فشل):", result);
+}
+    } catch (error) {
+        console.error("Error:", error);
+        alert("خطأ في الاتصال بالخادم");
+    }
+});
+</script>
+
+<script type="module">
+    import { AuthAPI } from './api.js';
+
+    // دالة تسجيل الدخول الجديدة
+    async function loginWithAPI() {
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        if (!email || !password) {
+            alert('Please fill all fields');
+            return;
+        }
+
+        const result = await AuthAPI.login({ 
+            email: email, 
+            password: password 
+        });
+        
+        if (result.success) {
+            // نجاح - نحفظ بيانات المستخدم
+            localStorage.setItem("username", result.data.user?.username || "User");
+            localStorage.setItem("token", result.data.access_token);
+            localStorage.setItem("user", JSON.stringify(result.data.user));
+            
+            alert(result.data.message || 'Login successful');
+            window.location.href = "index.html"; // أو index-ar.html للعربية
+        } else {
+            // فشل - نعرض رسالة الخطأ
+            alert(result.data.detail || 'Login failed');
+        }
+    }
+
+    // نربط الدالة الجديدة مع الزر الحالي
+    document.querySelector('.btn-form').addEventListener('click', loginWithAPI);
+    
+    // دعم الزر Enter
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginWithAPI();
+            }
+        });
+    });
+</script>
+</body>
+</html>

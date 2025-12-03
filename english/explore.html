@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Properties - VeRandA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="arabic.css">
     <link rel="stylesheet" href="nav-footer.css">
 
 </head>
@@ -17,27 +15,27 @@
 
     <!-- قسم الهيرو -->
     <section class="ex">
-        <h1>اكتشف عقاراتنا</h1>
-        <p>ابحث عن وجهة عطلاتك المثالية</p>
+        <h1>Explore Our Properties</h1>
+        <p>Find your perfect vacation destination</p>
     </section>
 
     <!-- البحث والتصفية -->
     <div class="explore-container">
         <div class="search-filters">
             <!-- صندوق البحث -->
-            <form class="search">
+             <form class="search">
             <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input class="search-input" type="search" placeholder="...بحث" dir="auto">
+                <input class="search-input" type="search" placeholder="search..." dir="auto">
             </div>
         </form>
 
             <!-- أزرار التصفية -->
             <ul class="properties-filter">
-                <li><a class="is_active" href="#" data-filter="all">عرض الكل</a></li>
-                <li><a href="#" data-filter="chalet">شاليهات</a></li>
-                <li><a href="#" data-filter="villa">فيلا</a></li>
-                <li><a href="#" data-filter="resthouse">استراحة</a></li>
+                <li><a class="is_active" href="#" data-filter="all">Show All</a></li>
+                <li><a href="#" data-filter="chalet">chalets</a></li>
+                <li><a href="#" data-filter="villa">Villas</a></li>
+                <li><a href="#" data-filter="resthouse">Rest Houses</a></li>
             </ul>
         </div>
 
@@ -50,7 +48,7 @@
     <!-- زر المفضلة العائم - يظهر دائمًا -->
     <a href="favorites.html" class="view-favorites" id="view-favorites-btn">
         <i class="fas fa-heart"></i>
-        <span id="favorites-count">0</span> المفضلة
+        <span id="favorites-count">0</span> Favorites
     </a>
 
     <!-- الفوتر -->
@@ -68,10 +66,10 @@
         const properties = [
             {
                 id: 1,
-                title: "استراحة المرجان-طرابلس",
+                title: "Almurgan resthouse-tripoli",
                 type: "resthouse",
                 image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "استراحة أنيقة في موقع مميز مع إطلالات خلابة وتصميم داخلي عصري",
+                description: "Elegant apartment in prime location with stunning views and modern interior design",
                 rooms: 4,
                 capacity: 6,
                 rating: 4.5,
@@ -80,10 +78,10 @@
             },
             {
                 id: 2,
-                title: "عقار العائلة-الخمس",
+                title: "Family estate-Alkhoums",
                 type: "villa",
                 image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "فيلا فاخرة مع حديقة خاصة وحوض سباحة، تصميم أنيق ومساحات واسعة",
+                description: "Luxury villa with private garden and pool, elegant design and spacious areas",
                 rooms: 6,
                 capacity: 10,
                 rating: 4.8,
@@ -92,10 +90,10 @@
             },
             {
                 id: 3,
-                title: "قرية سيرين- القويعه",
+                title: "Sirin village-Alqweaia",
                 type: "chalet",
                 image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "شاليه فاخر مع اطلالة بحرية",
+                description: "Luxury chalet with sea view",
                 rooms: 5,
                 capacity: 8,
                 rating: 4.9,
@@ -104,10 +102,10 @@
             },
             {
                 id: 4,
-                title: "استراحة سيري-طرابلس",
+                title: "Siri resthouse-tripoli",
                 type: "resthouse",
                 image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "اطلالة بحرية ",
+                description: "Sea view",
                 rooms: 3,
                 capacity: 4,
                 rating: 4.2,
@@ -116,10 +114,10 @@
             },
             {
                 id: 5,
-                title: "رويال-القره بولي",
+                title: "Royal-Alqarabulli",
                 type: "villa",
                 image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-                description: "فيلا عائلية بتصميم عصري وحديث",
+                description: "Family villa with a modern design",
                 rooms: 5,
                 capacity: 8,
                 rating: 4.6,
@@ -128,10 +126,10 @@
             },
             {
                 id: 6,
-                title: "السرايا-زوارة",
+                title: "Alsaraya-zuwara",
                 type: "chalet",
-                image: "arabic/image/frames-for-your-heart-mR1CIDduGLc-unsplash.jpg",
-                description: "اطلالة بحرية ",
+                image: "https://images.unsplash.com/photo-1540518614846-7eded102d7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Sea view",
                 rooms: 6,
                 capacity: 10,
                 rating: 4.7,
@@ -173,15 +171,15 @@
                         <div class="property-details">
                             <div class="detail-item">
                                 <i class="fas fa-door-open"></i>
-                                <span>${property.rooms} غرف</span>
+                                <span>${property.rooms} Rooms</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-user-friends"></i>
-                                <span>${property.capacity} أشخاص</span>
+                                <span>${property.capacity} People</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-tag"></i>
-                                <span>${property.price} د.ل</span>
+                                <span>${property.price} D.L</span>
                             </div>
                         </div>
                         
@@ -192,7 +190,7 @@
                             <span class="rating-count">(${property.reviews} reviews)</span>
                         </div>
                         
-                        <button class="details-btn" data-id="${property.id}">عرض التفاصيل</button>
+                        <button class="details-btn" data-id="${property.id}">View Details</button>
                     </div>
                 `;
                 
@@ -367,7 +365,6 @@
     </script>
 
 
-<!-- في نهاية الملف قبل </body> -->
 <script type="module">
     import { PropertyAPI } from './api.js';
 
@@ -375,24 +372,25 @@
     async function loadPropertiesFromAPI() {
         const result = await PropertyAPI.getAll();
         if (result.success && result.data) {
+            // تحويل البيانات من API إلى الصيغة المطلوبة
             return result.data.map(place => ({
                 id: place.id,
                 title: place.name,
-                description: place.description || 'لا يوجد وصف',
-                location: place.location || 'موقع غير معروف',
-                pricePerNight: place.price ? place.price.toString() : '0',
-                rooms: place.number_of_rooms || 1,
-                capacity: place.room_capacity || 1,
-                type: place.type || 'منتجع',
-                image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-                rating: 4.5,
-                reviews: Math.floor(Math.random() * 100) + 10
+                description: place.description,
+                location: place.location,
+                pricePerNight: place.price.toString(),
+                rooms: place.number_of_rooms,
+                capacity: place.room_capacity,
+                type: place.type,
+                image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', // افتراضية
+                rating: 4.5, // افتراضي
+                reviews: 10 // افتراضي
             }));
         }
         return [];
     }
 
-    // دالة التحميل الرئيسية
+    // نعدل دالة التحميل
     async function loadProperties() {
         // نجرب API أولاً
         let propertiesFromAPI = await loadPropertiesFromAPI();

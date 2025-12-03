@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="arabic.css">
     <link rel="stylesheet" href="nav-footer.css">
     <link rel="js" href="nav-footer.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -15,8 +16,8 @@
 <body class="contact-page">
  <div id="navbar"></div>
   <div class="contact-header">
-        <h2>Contact Us</h2>
-        <p>Are you a resort or vacation home owner? Partner with us to feature your property on our platform! Fill out the form below and our team will contact you to get started.</p>
+        <h2>تواصل معنا</h2>
+        <p>هل أنت مالك منتجع أو استراحة؟ انضم إلينا لعرض عقارك على منصتنا! املأ النموذج أدناه وسيتواصل معك فريقنا للبدء.</p>
       </div>
 
   <section class="contact-section">
@@ -25,16 +26,16 @@
         <!-- Contact Info -->
         <div class="contact-info">
           <div class="info-item">
-            <h4>Phone Number</h4>
-            <p><a href="tel:+218920000000">+218 920000000</a></p>
+            <h4>رقم الهاتف</h4>
+            <p><a href="tel:+218920000000">920000000 218+</a></p>
           </div>
           <div class="info-item">
-            <h4>Email Address</h4>
+            <h4>البريد الإلكتروني</h4>
             <p><a href="mailto:info@veranda.com">info@veranda.com</a></p>
           </div>
           <div class="info-item">
-            <h4>Office Address</h4>
-            <p>Tripoli, Ain zara, 5 streets</p>
+            <h4>عنوان المكتب</h4>
+            <p>طرابلس, عين زارة, الخمسة شوارع</p>
           </div>
         </div>
 
@@ -42,15 +43,15 @@
         <div class="contact-form">
           <form id="contactForm" action="#" method="post">
             <div class="form-group">
-              <input type="text" name="name" placeholder="Your Name" required>
+              <input type="text" name="name" placeholder="الإسم" required>
             </div>
             <div class="form-group">
-              <input type="email" name="email" placeholder="Your Email" required>
+              <input type="email" name="email" placeholder="البريد الإلكتروني" required>
             </div>
             <div class="form-group">
-              <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+              <textarea name="message" rows="6" placeholder="رسالة" required></textarea>
             </div>
-            <button type="submit" class="btnc">Send Message</button>
+            <button type="submit" class="btnc">إرسال الرسالة</button>
           </form>
         </div>
       </div>
@@ -107,17 +108,17 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
         // التحقق من البيانات
         if (!contactData.name || !contactData.email || !contactData.message) {
-            alert('Please fill all required fields');
+            alert('يرجى ملء الحقول المطلوبة');
             return;
         }
 
         const result = await ContactAPI.submit(contactData);
         
         if (result.success) {
-            alert('Your message has been sent successfully, we will contact you soon');
+            alert('تم إرسال رسالتك بنجاح، سنتواصل معك قريباً');
             event.target.reset();
         } else {
-            alert(result.data.detail || 'Failed to send message');
+            alert(result.data.detail || 'فشل إرسال الرسالة');
         }
     }
 

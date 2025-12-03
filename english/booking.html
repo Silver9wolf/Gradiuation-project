@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +16,13 @@
     <!-- قسم الحجز الرئيسي -->
     <div class="booking-container">
         <div class="booking-header">
-            <h1>أكمل الحجز</h1>
-            <p>راجع بياناتك وأكد حجزك</p>
+            <h1>Complete Your Booking</h1>
+            <p>Review your details and confirm your reservation</p>
         </div>
 <div style="text-align: left; margin-bottom: 20px;">
     <a href="#" onclick="goBackToProperty()" style="color: #0077B6; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
         <i class="fas fa-arrow-left"></i>
-        العودة إلى تفاصيل العقار
+        Back to Property Details
     </a>
 </div>
         <div class="booking-content">
@@ -36,33 +36,31 @@
 
                 <!-- نموذج معلومات الزبون -->
                 <div class="booking-form-section">
-                    <h2 class="form-section-title">معلومات الزبون</h2>
+                    <h2 class="form-section-title">Guest Information</h2>
                     
                     <div class="alert" id="booking-alert"></div>
                     
                     <form id="booking-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="firstName">الإسم *</label>
+                                <label for="firstName">Name *</label>
                                 <input type="text" id="firstName" name="firstName" required>
                             </div>
-                            
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="email">البريد الإلكتروني *</label>
+                                <label for="email">Email Address *</label>
                                 <input type="email" id="email" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">رقم الهاتف *</label>
+                                <label for="phone">Phone Number *</label>
                                 <input type="tel" id="phone" name="phone" required>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="specialRequests">ملاحظة</label>
-                            <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="..."></textarea>
+                            <label for="specialRequests">Special Requests</label>
+                            <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requirements or requests..."></textarea>
                         </div>
                     </form>
                 </div>
@@ -71,39 +69,39 @@
             <!-- ملخص الحجز -->
             <div class="booking-right">
                 <div class="booking-summary-section">
-                    <h2 class="form-section-title">ملخص الحجز</h2>
+                    <h2 class="form-section-title">Booking Summary</h2>
                     
                     <div class="booking-dates">
                         <div class="date-item">
-                            <span>تاريخ الوصول:</span>
+                            <span>Check-in:</span>
                             <strong id="checkin-date">--/--/----</strong>
                         </div>
                         <div class="date-item">
-                            <span>تاريخ الخروج:</span>
+                            <span>Check-out:</span>
                             <strong id="checkout-date">--/--/----</strong>
                         </div>
                         <div class="date-item">
-                            <span>عدد الأيام:</span>
+                            <span>Nights:</span>
                             <strong id="nights-count">0</strong>
                         </div>
                     </div>
 
                     <div class="price-breakdown">
                         <div class="price-item">
-                            <span>سعر اليوم</span>
-                            <span id="price-per-night">0 د.ل</span>
+                            <span>Price per night</span>
+                            <span id="price-per-night">0 D.L</span>
                         </div>
                         <div class="price-item">
-                            <span>عدد الأيام</span>
+                            <span>Number of nights</span>
                             <span id="nights-display">0</span>
                         </div>
                         <div class="price-item">
-                            <span>رسوم الخدمة</span>
-                            <span id="service-fee">0 د.ل</span>
+                            <span>Service fee</span>
+                            <span id="service-fee">0 D.L</span>
                         </div>
                         <div class="price-item total">
-                            <span>المبلغ الإجمالي</span>
-                            <span id="total-amount">0 د.ل</span>
+                            <span>Total Amount</span>
+                            <span id="total-amount">0 D.L</span>
                         </div>
                     </div>
 
@@ -111,16 +109,18 @@
                         <div class="checkbox-group">
                             <input type="checkbox" id="terms-agree" required>
                             <label for="terms-agree">
-                                أوافق على <a href="#" class="terms-link">الشروط والأحكام</a> و
-                                <a href="#" class="terms-link">سياسة الإلغاء</a> *
+                                I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and 
+                                <a href="#" class="terms-link">Cancellation Policy</a> *
                             </label>
                         </div>
                     </div>
 
                     <button class="book-now-btn" id="confirm-booking-btn" disabled>
                         <i class="fas fa-lock"></i>
-                        تأكيد الحجز
+                        Confirm Booking
                     </button>
+
+                    
                 </div>
             </div>
         </div>
@@ -140,60 +140,60 @@
     const properties = [
         {
             id: 1,
-            title: "استراحة المرجان-طرابلس",
+            title: "Almurgan resthouse-tripoli",
             type: "resthouse",
             image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "طرابلس",
+            location: "Tripoli",
             pricePerNight: "1000",
             rooms: 4,
             capacity: 6
         },
         {
             id: 2,
-            title: "عقار العائلة-الخمس",
+            title: "Family estste-Alkhoums",
             type: "villa",
             image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "الخمس",
+            location: "Alkhoums",
             pricePerNight: "1500",
             rooms: 6,
             capacity: 10
         },
         {
             id: 3,
-            title: "قرية سيرين-القويعه",
+            title: "Sirin village-Alqweaia",
             type: "chalet",
             image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "القويعه",
+            location: "Alqweaia",
             pricePerNight: "2000",
             rooms: 5,
             capacity: 8
         },
         {
             id: 4,
-            title: "استراحة سيري-طرابلس",
+            title: "Siri resthouse-tripoli",
             type: "resthouse",
             image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "طرابلس",
+            location: "Tripoli",
             pricePerNight: "800",
             rooms: 3,
             capacity: 4
         },
         {
             id: 5,
-            title: "رويال-القره بولي",
+            title: "Royal-Alqarabulli",
             type: "villa",
             image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "القره بولي",
+            location: "Alqarabulli",
             pricePerNight: "1350",
             rooms: 5,
             capacity: 8
         },
         {
             id: 6,
-            title: "السرايا-زوارة",
+            title: "Alsaraya-zuwara",
             type: "chalet",
             image: "https://images.unsplash.com/photo-1540518614846-7eded102d7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-            location: "زوارة",
+            location: "zuwara",
             pricePerNight: "1100",
             rooms: 6,
             capacity: 10
@@ -241,15 +241,16 @@
             <div class="property-details-grid">
                 <div class="detail-item">
                     <i class="fas fa-door-open"></i>
-                    <span>${selectedProperty.rooms} غرف</span>
+                    <span>${selectedProperty.rooms} Rooms</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-user-friends"></i>
-                    <span>${selectedProperty.capacity} شخص</span>
+                    <span>${selectedProperty.capacity} People</span>
                 </div>
+                
                 <div class="detail-item">
                     <i class="fas fa-tag"></i>
-                    <span>${selectedProperty.pricePerNight} د.ل/الليلة</span>
+                    <span>${selectedProperty.pricePerNight} D.L/night</span>
                 </div>
             </div>
         `;
@@ -307,9 +308,9 @@
         document.getElementById('nights-display').textContent = nightsCount;
         
         // تحديث الأسعار
-        document.getElementById('price-per-night').textContent = selectedProperty.pricePerNight + ' د.ل';
-        document.getElementById('service-fee').textContent = serviceFee.toLocaleString() + ' د.ل';
-        document.getElementById('total-amount').textContent = totalAmount.toLocaleString() + ' د.ل';
+        document.getElementById('price-per-night').textContent = selectedProperty.pricePerNight + ' D.L';
+        document.getElementById('service-fee').textContent = serviceFee.toLocaleString() + ' D.L';
+        document.getElementById('total-amount').textContent = totalAmount.toLocaleString() + ' D.L';
     }
 
     // دالة لتهيئة نموذج الحجز
@@ -379,12 +380,14 @@
     function calculateTotalAmount() {
         const pricePerNight = parseInt(selectedProperty.pricePerNight.replace(',', ''));
         const basePrice = pricePerNight * nightsCount;
-        const serviceFee = Math.round(basePrice * 0);
-        const totalAmount = basePrice + serviceFee ;
+        const serviceFee = Math.round(basePrice * 0.1);
+        const tourismFee = Math.round(basePrice * 0.05);
+        const totalAmount = basePrice + serviceFee + tourismFee;
         
         return {
             basePrice,
             serviceFee,
+            tourismFee,
             totalAmount
         };
     }
@@ -435,6 +438,47 @@
         initBookingForm();
     });
 </script>
+// في booking.html - نضيف
+<script type="module">
+    import { PropertyAPI } from './api.js';
+
+    // دالة جديدة للحجز عبر API
+    async function createBookingAPI(bookingData) {
+        const result = await PropertyAPI.createBooking(selectedProperty.id, bookingData);
+        return result;
+    }
+
+    // نعدل دالة processBooking الحالية
+    async function processBooking() {
+        const formData = new FormData(document.getElementById('booking-form'));
+        
+        const bookingData = {
+            full_name: formData.get('firstName'),
+            email: formData.get('email'),
+            phone_number: formData.get('phone'),
+            check_in: checkInDate.toISOString().split('T')[0],
+            check_out: checkOutDate.toISOString().split('T')[0],
+            notes: formData.get('specialRequests')
+        };
+
+        // نجرب نحجز عبر API
+        const result = await createBookingAPI(bookingData);
+        
+        if (result.success) {
+            // نجاح - ننظف البيانات ونوجه
+            localStorage.removeItem('selectedDates');
+            showAlert('Booking confirmed successfully!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = `booking-confirmation.html?id=${result.data.id}`;
+            }, 2000);
+        } else {
+            // فشل - نعرض رسالة الخطأ
+            showAlert(result.data.detail || 'Booking failed', 'error');
+        }
+    }
+</script>
+
 
 <script type="module">
     import { PropertyAPI } from './api.js';
@@ -492,6 +536,5 @@
         }
     });
 </script>
-
 </body>
 </html>

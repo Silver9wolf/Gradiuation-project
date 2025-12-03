@@ -1,80 +1,80 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Poppins' , sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins' , sans-serif;
 }
 /*! =========================================== LOGIN + REGISTER ===========================================*/
 
 .login {  /*!الbody متع الصفحة كاملة*/
-margin: 0;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-background-image: url(image/nattu-adnan-atSUvc1hMwk-unsplash.jpg);
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(image/nattu-adnan-atSUvc1hMwk-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .wrapper { /*! الفورم*/
-position: relative;
-width: 410px;
-height: 440px;
-background: transparent;
-border: 2px solid rgb(255, 255, 255, .5);
-border-radius: 20px;
-backdrop-filter: blur(20px);
-box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-display: flex;
-justify-content: center;
-align-items: center;
-
+  position: relative;
+  width: 410px;
+  height: 440px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 .wrapper .form-box {
-/* width: 100px; */
-padding: 40px;
+  /* width: 100px; */
+  padding: 40px;
 }
 .form-box h2 { /*! كلمة login*/
-font-size: 1cm;
-color: rgb(255, 255, 255);
-text-align: center;
+  font-size: 1cm;
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
 .input-box { /*! الخط اللوطي متع البوكس*/
-position: relative;
-width: 100%;
-height: 50px;
-border-bottom: 2px solid rgb(255, 255, 255);
-margin: 30px 0;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  margin: 30px 0;
 }
 
 .input-box input { /*! صندوق الادخال*/
-width: 100%;
-height: 140%;
-background: transparent;
-border: none;
-outline: none;
-font-size: 0.5cm;
-color: rgb(39, 39, 39);
-line-height: 100px;
-padding: 0 35px 0 5px;
+  width: 100%;
+  height: 140%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.5cm;
+  color: rgb(39, 39, 39);
+  line-height: 100px;
+  padding: 0 35px 0 5px;
 
 }
 .input-box .icon { /*! ايقونات البوكس*/
-position: absolute;
-right: 8px;
-font-size: 0.5cm;
-color: white;
-line-height: 57px;
+  position: absolute;
+  right: 8px;
+  font-size: 0.5cm;
+  color: white;
+  line-height: 57px;
 }
 .remember-forgot { /*! سطر تذكرني*/
-font-size: 0.4cm;
-color: rgb(83, 83, 83);
-font-weight: 500;
-margin: -15px 0 15px;
-display: flex;
-justify-content: space-between;
+  font-size: 0.3cm;
+  color: rgb(83, 83, 83);
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
 }
 .remember-forgot label {
     display: flex;
@@ -87,274 +87,274 @@ justify-content: space-between;
     transform: scale(1.2);
 }
 .remember-forgot label input { /*! صندوق التشيك بوكس*/
-accent-color: #023E8A;
-margin-right: 3px;
+  accent-color: #023E8A;
+  margin-right: 3px;
 }
 .remember-forgot a {
-color: #0077B6;
-text-decoration: none;
+  color: #0077B6;
+  text-decoration: none;
 }
 .remember-forgot a:hover {
-color:#023E8A;
-text-decoration: underline;
+ color:#023E8A;
+ text-decoration: underline;
 }
 .btn-form { /*! البوتون*/
-background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
-font-size: 0.7cm;
-color: white;
-padding: 8px 60px;
-margin-bottom: 35px;
-margin-top: 20px;
-justify-content: center;
-border: none;
-border-radius: 10px;
-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-cursor: pointer;
-transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
-/*background-size: 300% 300%; /* للسماح بتحريك التدرج */
+  background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
+  font-size: 0.7cm;
+  color: white;
+  padding: 4px 100px;
+  margin-bottom: 35px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  /*background-size: 300% 300%; /* للسماح بتحريك التدرج */
 }
 
 .btn-form:hover {
-background-position: right center; /* حركة التدرج */
-transform: scale(1.05); /* تكبير خفيف */
-box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.3); /* ظل أكبر */
+  background-position: right center; /* حركة التدرج */
+  transform: scale(1.05); /* تكبير خفيف */
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.3); /* ظل أكبر */
 }
 .login-register { /*! سطر تذكرني*/
-font-size: 0.4cm;
-color: rgb(83, 83, 83);
-font-weight: 500;
-margin: -15px 0 15px;
-display: flex;
-justify-content: space-between;
-padding-top: 20px;
-padding-left: 20px;
+  font-size: 0.4cm;
+  color: rgb(83, 83, 83);
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 .login-register a {
-color:#0077B6;
-text-decoration: none;
+  color:#0077B6;
+  text-decoration: none;
 }
 .login-register a:hover {
-color:#023E8A;
-text-decoration: underline;
+  color:#023E8A;
+ text-decoration: underline;
 }
 .register {  /*!الbody متع الصفحة كاملة*/
-margin: 0;
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-background-image: url(image/nattu-adnan-atSUvc1hMwk-unsplash.jpg);
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(image/nattu-adnan-atSUvc1hMwk-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .wrapper2 { /*! الفورم*/
-position: relative;
-width: 420px;
-height: 580px;
-background: transparent;
-border: 2px solid rgb(255, 255, 255, .5);
-border-radius: 20px;
-backdrop-filter: blur(20px);
-box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-display: flex;
-justify-content: center;
-align-items: center;
-
+  position: relative;
+  width: 420px;
+  height: 580px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 .wrapper2 .form-box {
-/* width: 100px; */
-padding: 40px;
+  /* width: 100px; */
+  padding: 40px;
 }
 .register-login { /*! سطر تذكرني*/
-font-size: 0.4cm;
-color: rgb(83, 83, 83);
-font-weight: 500;
-margin: -15px 0 15px;
-display: flex;
-justify-content: center;
-padding-top: 20px;
+  font-size: 0.4cm;
+  color: rgb(83, 83, 83);
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 40px;
 }
 .register-login a {
-color:#0077B6;
-text-decoration: none;
+  color:#0077B6;
+  text-decoration: none;
 }
 .register-login a:hover {
-color:#023E8A;
-text-decoration: underline;
+  color:#023E8A;
+ text-decoration: underline;
 }
 
 /*! =========================================== CONTACT US ===========================================*/
 body.contact-page {
-margin: 0;
-font-family: 'Poppins', sans-serif;
-background-color: #ebebeb;
-color: #333;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ebebeb;
+  color: #333;
 }
 
 .contact-section {
-padding: 80px 0;
+  padding: 80px 0;
 }
 
 .container {
-width: 90%;
-max-width: 1200px;
-margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contact-header {
-text-align: center;
-margin: 60px 0px 100px 0;
-background-image: url("image/paolo-nicolello-2gOxKj594nM-unsplash.jpg");
-background-size: cover;
-background-position: center;
-height: 320px;
-width: 100%;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-position: relative;
+  text-align: center;
+  margin: 60px 0px 100px 0;
+  background-image: url("image/paolo-nicolello-2gOxKj594nM-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 320px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 /* الطبقة الغامقة فوق الصورة */
 .contact-header::before {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.644); /* درجة التعتيم — زيديها لو تبيها أغمق */
-z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.644); /* درجة التعتيم — زيديها لو تبيها أغمق */
+  z-index: 1;
 }
 
 .contact-header h2 {
-padding: 80px 0 20px 0;
-font-size: 50px;
-color: #ffffff;
-margin-bottom: 10px;
+  padding: 80px 0 20px 0;
+  font-size: 50px;
+  color: #ffffff;
+  margin-bottom: 10px;
     position: relative;
-z-index: 2; 
+   z-index: 2; 
 
 }
 
 .contact-header p {
-font-size: 18px;
-color: #ffffff;
+  font-size: 18px;
+  color: #ffffff;
     position: relative;
-z-index: 2; 
-padding: 0px 100px;
-
+   z-index: 2; 
+   padding: 0px 100px;
+   
 }
 
 .contact-content {
-display: flex;
-flex-wrap: wrap;
-gap: 40px;
-justify-content: space-between;
-margin-bottom: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 60px;
 }
 
 .contact-info {
-flex: 1;
-min-width: 280px;
-
+  flex: 1;
+  min-width: 280px;
+ 
 }
 
 .info-item {
-background: #ffffff;
-border-radius: 12px;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-padding: 25px;
-margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+  padding: 25px;
+  margin-bottom: 20px;
 }
 
 .info-item h4 {
-color: #2a2a2a;
-margin-bottom: 8px;
+  color: #2a2a2a;
+  margin-bottom: 8px;
 }
 
 .info-item a, .info-item p {
-color: #666;
-text-decoration: none;
-font-size: 15px;
+  color: #666;
+  text-decoration: none;
+  font-size: 15px;
 }
 
 .contact-form {
-flex: 1.5;
-min-width: 300px;
-background: #fff;
-border-radius: 12px;
-padding: 40px;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+  flex: 1.5;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .form-group {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 input, textarea {
-width: 100%;
-padding: 12px;
-border: 1px solid #ddd;
-border-radius: 8px;
-font-size: 15px;
-outline: none;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
 }
 
 input:focus, textarea:focus {
-border-color: #0077B6;
+  border-color: #0077B6;
 }
 
 
 .map-container iframe {
-border-radius: 12px;
-width: 100%;
-height: 400px;
+  border-radius: 12px;
+  width: 100%;
+  height: 400px;
 }
 .btnc {
-background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
-font-size: 0.5cm;
-color: white;
-padding: 10px 15px;
-margin-top: 20px;
-border: none;
-border-radius: 10px;
-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-cursor: pointer;
+  background: linear-gradient( to right,#023E8A, #0077B6, #00B4D8, #48CAE4, #90E0EF);
+  font-size: 0.5cm;
+  color: white;
+  padding: 10px 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 
 }
 .about-header {
-text-align: center;
-margin: 60px 0px 100px 0;
-background-image: url("image/paolo-nicolello-2gOxKj594nM-unsplash.jpg");
-background-size: cover;
-background-position: center;
-height: 300px;
-width: 100%;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-position: relative;
+  text-align: center;
+  margin: 60px 0px 100px 0;
+  background-image: url("image/paolo-nicolello-2gOxKj594nM-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 /* الطبقة الغامقة فوق الصورة */
 .about-header::before {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.719); /* درجة التعتيم — زيديها لو تبيها أغمق */
-z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.719); /* درجة التعتيم — زيديها لو تبيها أغمق */
+  z-index: 1;
 }
 
 .about-header h2 {
-padding: 100px 0 30px 0;
-font-size: 40px;
-color: #ffffff;
-margin-bottom: 10px;
+  padding: 100px 0 30px 0;
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 10px;
     position: relative;
-z-index: 2; 
+   z-index: 2; 
 
 }
 
@@ -362,291 +362,286 @@ z-index: 2;
 
     /* ========== HERO SECTION ========== */
     .hero {
-    height: 60vh;
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
+      height: 60vh;
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)
         ),
         url("image/sean-oulashin-KMn4VEeEPR8-unsplash.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 90px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 90px;
     }
 
     .hero h1 {
-    font-size: 50px;
-    margin-bottom: 10px;
+      font-size: 50px;
+      margin-bottom: 10px;
     }
 
     .hero p {
-    font-size: 18px;
-    max-width: 600px;
+      font-size: 18px;
+      max-width: 600px;
     }
 
     /* ========== INTRO SECTION ========== */
     .intro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 50px;
-    padding: 0px 0%;
-    margin-bottom: 50px;
-    background-color: #e5ef9050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px;
+      padding: 0px 0%;
+      margin-bottom: 50px;
+      background-color: #e5ef9050;
     }
 
     .intro-text {
-    flex: 1;
-    min-width: 300px;
+      flex: 1;
+      min-width: 300px;
     }
 
     .intro-text h2 {
-    font-size: 40px;
-    color: #023E8A;
-    margin-bottom: 20px;
-    padding-right: 60px;
+      font-size: 40px;
+      color: #023E8A;
+      margin-bottom: 20px;
+      padding-left: 60px;
     }
 
     .intro-text p {
-    line-height: 1.8;
-    font-size: 17px;
-    color: #242424;
-    padding-right: 60px;
+      line-height: 1.8;
+      font-size: 17px;
+      color: #242424;
+      padding-left: 60px;
     }
 
     .intro img {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
     }
 
     /* ========== MISSION & VISION ========== */
     .mission-vision {
-    background-color: #EAF8FF;
-    padding: 80px 10%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    text-align: center;
+      background-color: #EAF8FF;
+      padding: 80px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      text-align: center;
     }
 
     .card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 40px 25px;
-    width: 300px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+      background: #fff;
+      border-radius: 15px;
+      padding: 40px 25px;
+      width: 300px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
-    transform: translateY(-10px);
+      transform: translateY(-10px);
     }
 
     .card h3 {
-    color: #00B4D8;
-    margin-bottom: 15px;
+      color: #00B4D8;
+      margin-bottom: 15px;
     }
 
     /* ========== COUNTERS SECTION ========== */
     .counters {
-    background-image: linear-gradient(
-        rgba(2, 62, 138, 0.7),
-        rgba(2, 62, 138, 0.7)
+      background-image: linear-gradient(
+          rgba(2, 62, 138, 0.7),
+          rgba(2, 62, 138, 0.7)
         ),
         url("image/frank-mckenna-OD9EOzfSOh0-unsplash.jpg");
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    text-align: center;
-    padding: 80px 10%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 80px;
-    gap: 60px;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      padding: 80px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 80px;
+      gap: 60px;
     }
 
     .counter-box {
-    flex: 1;
-    min-width: 200px;
+      flex: 1;
+      min-width: 200px;
     }
 
     .counter {
-    font-size: 50px;
-    font-weight: bold;
-    color: #90E0EF;
-    display: block;
+      font-size: 50px;
+      font-weight: bold;
+      color: #90E0EF;
+      display: block;
     }
 
     .counter-box p {
-    margin-top: 10px;
-    font-size: 18px;
+      margin-top: 10px;
+      font-size: 18px;
     }
 
     /* ========== FINAL SECTION ========== */
     .final {
-    text-align: center;
-    padding: 100px 10%;
-    background-color: #0077B6;
-    color: #fff;
+      text-align: center;
+      padding: 100px 10%;
+      background-color: #0077B6;
+      color: #fff;
     }
 
     .final h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+      font-size: 28px;
+      margin-bottom: 15px;
     }
 
     .final button {
-    background-color: #90E0EF;
-    color: #023E8A;
-    border: none;
-    padding: 12px 30px;
-    font-size: 16px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 20px;
+      background-color: #90E0EF;
+      color: #023E8A;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
     }
 
     .final button:hover {
-    background-color: #48CAE4;
+      background-color: #48CAE4;
     }
 
     @media (max-width: 768px) {
-    .intro {
+      .intro {
         flex-direction: column;
-    }
+      }
 
-    .intro img {
+      .intro img {
         width: 100%;
-    }
+      }
     }
 
 .value {
-margin: 50px 30px;
-align-items: center;
-justify-content: center;
-display: flex;
-gap: 60px;
-flex-wrap: wrap;
-margin-bottom: 120px;
+  margin: 50px 30px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 120px;
 }
 .hv{
-justify-content: center;
-text-align: center;
-font-size: 25px;
-margin-top: 80px;
-color: #303030;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 80px;
+  color: #303030;
 }
 
 .cards {
-position: relative;
-width: 190px;
-height: 254px;
-background-color: white;
-display: flex;
-flex-direction: column;
-justify-content: end;
-padding: 12px;
-margin-top: 40px;
-gap: 12px;
-border-radius: 8px;
-cursor: pointer;
+  position: relative;
+  width: 190px;
+  height: 254px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 12px;
+  margin-top: 40px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .cards::before {
-content: '';
-position: absolute;
-inset: 0;
-left: -5px;
-right: -5px;
-margin: auto;
-width: 200px;
-height: 264px;
-border-radius: 10px;
-background: linear-gradient(-45deg, #023E8A 0%, #40c9ff 100% );
-z-index: -10;
-pointer-events: none;
-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 200px;
+  height: 264px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #023E8A 0%, #40c9ff 100% );
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cards::after {
-content: "";
-z-index: -1;
-position: absolute;
-inset: 0;
-background: linear-gradient(-45deg, #023E8A 0%, #00dbde 100% );
-transform: translate3d(0, 0, 0) scale(0.95);
-filter: blur(20px);
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #023E8A 0%, #00dbde 100% );
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
 }
 
 .heading {
-font-size: 25px;
-text-align: center;
-text-transform: capitalize;
-font-weight: 700;
-color: #023E8A;
+  font-size: 25px;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #023E8A;
 }
 
 .cards p:not(.heading) {
-font-size: 14px;
-text-align: center;
-
+  font-size: 14px;
+  text-align: center;
+  
 }
 
 .cards:hover::after {
-filter: blur(30px);
+  filter: blur(30px);
 }
 
 .cards:hover::before {
-transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+  transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
 }
 .emoji {
-color: #47cbf3;
-font-size: 60px; /* حجم الإيموجي */
-text-align: center;
-margin: 0 0 20px 0;
-
+  color: #47cbf3;
+  font-size: 60px; /* حجم الإيموجي */
+  text-align: center;
+  margin: 0 0 20px 0;
+  
 }
-
-
-
-
 
 /*! =========================================== EXPLORE ===========================================*/
 
 
 .ex {
-    height: 60vh;
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
+      height: 60vh;
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)
         ),
         url("image/mathew-waters-cuTk59eNHUE-unsplash.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 90px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 90px;
     }
 
     .ex h1 {
-    font-size: 50px;
-    margin-bottom: 10px;
+      font-size: 50px;
+      margin-bottom: 10px;
     }
     body {
     background-color: #ffffff !important;
@@ -1263,7 +1258,7 @@ margin: 0 0 20px 0;
     }
 }
 
-/*?السكشن الثاني*/
+  /*?السكشن الثاني*/
 .about-home {
     display: flex;
     align-items: center;
@@ -1373,7 +1368,6 @@ margin: 0 0 20px 0;
     }
 }
 
-/* ========== NEW SECTIONS STYLES ========== */
         
         /* Property Types Section */
         .property-types {
@@ -1684,10 +1678,9 @@ margin: 0 0 20px 0;
             }
         }
 
-
 /*! =========================================== PROPERTY DETAILS ===========================================*/
 
-/* ========== PROPERTY DETAILS STYLES ========== */
+   /* ========== PROPERTY DETAILS STYLES ========== */
 .property-details-container {
     max-width: 1200px;
     margin: 100px auto 50px;
@@ -2149,7 +2142,7 @@ margin: 0 0 20px 0;
 
 /*! =========================================== BOOKING ===========================================*/
 
-/* ========== BOOKING PAGE STYLES ========== */
+  /* ========== BOOKING PAGE STYLES ========== */
         .booking-container {
             max-width: 1200px;
             margin: 100px auto 50px;
@@ -2449,7 +2442,6 @@ margin: 0 0 20px 0;
                 grid-template-columns: 1fr;
             }
         }
-
 
 
         /* زر الرجوع للأعلى  */
